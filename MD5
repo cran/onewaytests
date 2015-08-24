@@ -1,0 +1,17 @@
+94029c090f1d64fb2455d83e8bf74f72 *DESCRIPTION
+1907075c330603ad59234a9788f06b4d *NAMESPACE
+9b8d9e1b7c7e25e589a49928aee992b4 *R/ag.test.R
+f768f8b8b84bc3682821455dcd33ee9d *R/aov.test.R
+1efc63a3bb0c6b4317578789f387beed *R/bf.test.R
+ef854e1f8a8b23aed99eb9a002abfdad *R/james.test.R
+c609188c7f61e5e878592da4a37c989a *R/kw.test.R
+b6b996ffbf515148a046ce450f57ba00 *R/mood.test.R
+c37572ccf7042a4eeb9ff767a4cb5111 *R/welch.test.R
+9997d1aa5033583ecf1bbbe6df7d1097 *man/ag.test.Rd
+e170ede04d7c34449dc14ff8c4e4d06e *man/aov.test.Rd
+2c703048ef63a69777a59e2341c912d6 *man/bf.test.Rd
+a7dde08a5c00592c4525e16d8a53961c *man/james.test.Rd
+916efe376b0f11eebb9a1931b1a90081 *man/kw.test.Rd
+2c37ec1d70bbd04948f849346fac7b06 *man/mood.test.Rd
+d1f6c5a786b137ed583de1d3594821fc *man/onewaytests.Rd
+4bc3f204b2de3cf97dba068f93d765c7 *man/welch.test.Rd
