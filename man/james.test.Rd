@@ -8,14 +8,15 @@ A Function to Perform James's Second-Order Test
 \code{james.test} performs James's second-order test.
 }
 
-\usage{james.test(y, group, alpha = 0.05)}
+\usage{james.test(y, group, alpha = 0.05, na.rm = TRUE)}
 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{y}{a numeric vector of data values.}
   \item{group}{a vector or factor object giving the group for the corresponding elements of y.}
   \item{alpha}{a significance level. Defaults alpha = 0.05.}
- 
+   \item{na.rm}{a logical value indicating whether NA values should be stripped before the computation proceeds.}
+
 
 }
 
@@ -25,10 +26,8 @@ A Function to Perform James's Second-Order Test
 
 
 \value{
-Returns a list containing following elements:
-\item{statistic}{the James's Second-Order Test statistic.}
-\item{criticalvalue}{the critical value of the James's Second-Order Test statistic.}
-\item{result}{the result of the test.}
+A list with class "htest" containing the following components:\item{statistic}{the James's Second-Order Test statistic.}
+\item{parameter}{the critical value of the James's Second-Order Test statistic.}
 
 }
 

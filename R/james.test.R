@@ -1,5 +1,14 @@
-james.test <- function(y, group, alpha=0.05) {
+james.test <- function(y, group, alpha=0.05, na.rm = TRUE) {
   
+if (na.rm){
+    completeObs <- complete.cases(y, group)
+    y <- y[completeObs]
+    group <- group[completeObs]
+  }
+  df <- data.frame(Response = y, Group = group)
+  DNAME <- "y vs group"
+  METHOD <- "James's Second-Order Test"
+
   n <- length(y)
   x.levels <- levels(factor(group))
   J<-length(x.levels)
@@ -68,7 +77,16 @@ CV <- c+((1/2)*(3*chi4+chi2)*Tsum)+((1/16)*((3*chi4+chi2)^2)*(1-((J-3)/c))*(Tsum
 
 result<-( if (Jtest >= CV) "Reject H_0" else "Fail to reject H_0")
 
+
+names(Jtest) <- "Jtest"
+names(CV) <- c("CriticalValue")
   
-  return(list(statistic = Jtest, criticalvalue = CV, result=result))
-  
+ if(sum(!completeObs) > 0){
+if(sum(!completeObs)==1){cat("\n", paste("NOTE: ", sum(!completeObs), " of ", sum(!completeObs)+length(y), "observations was removed due to missingness."), "\n")
+}else  {cat("\n", paste("NOTE: ", sum(!completeObs), " of ", sum(!completeObs)+length(y), "observations were removed due to missingness."), "\n")}
 }
+
+structure(list(statistic = Jtest, parameter= CV, method = METHOD, data.name = DNAME), class = "htest")
+
+}
+

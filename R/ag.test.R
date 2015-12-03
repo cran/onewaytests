@@ -1,4 +1,14 @@
-ag.test <- function(y, group) {
+ag.test <- function(y, group, na.rm = TRUE) {
+
+ if (na.rm){
+    completeObs <- complete.cases(y, group)
+    y <- y[completeObs]
+    group <- group[completeObs]
+  }
+  df <- data.frame(Response = y, Group = group)
+  DNAME <- "y vs group"
+  METHOD <- "Alexander-Govern Test"
+
 
   n <- length(y)
   x.levels <- levels(factor(group))
@@ -31,6 +41,18 @@ ag.test <- function(y, group) {
   df <- length(x.levels)-1
   p.value <- pchisq(approx, df=df, lower.tail=FALSE)
 
+  names(approx) <- "X-squared"
+  PARAMETER <- c(df)
+  names(PARAMETER) <- c("df")
+  
+  if(sum(!completeObs) > 0){
+if(sum(!completeObs)==1){cat("\n", paste("NOTE: ", sum(!completeObs), " of ", sum(!completeObs)+length(y), "observations was removed due to missingness."), "\n")
+}else  {cat("\n", paste("NOTE: ", sum(!completeObs), " of ", sum(!completeObs)+length(y), "observations were removed due to missingness."), "\n")}
+}
+  
+  structure(list(statistic = approx, parameter = PARAMETER, 
+                 p.value = p.value, method = METHOD, data.name = DNAME), class = "htest")
 
-  return(list(statistic=approx, df=df, p.value=p.value))
+
+
 }

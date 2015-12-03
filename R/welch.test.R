@@ -1,5 +1,19 @@
 
-welch.test <- function(y, group, rate = 0) {
+welch.test <- function(y, group, rate = 0, na.rm = TRUE) {
+
+
+ if (na.rm){
+    completeObs <- complete.cases(y, group)
+    y <- y[completeObs]
+    group <- group[completeObs]
+  }
+  df <- data.frame(Response = y, Group = group)
+  DNAME <- "y vs group"
+
+if (rate==0){METHOD <- "Welch's Heteroscedastic F Test"
+}else{METHOD <- "Welch's Heteroscedastic F Test with Trimmed Mean and Winsorized Variance"}
+  
+
 
 trim=function(x,rate){
 n=length(x)
@@ -58,21 +72,18 @@ df2=(3/(J^2-1)*sum((1-w/U)^2/(b-1)))^(-1)
 
 p.value=pf(Ftest,df1,df2,lower.tail = F)
 
-return(list(statistic = Ftest, df1 = df1, df2 = df2, p.value = p.value))
+
+  names(Ftest) <- "F"
+  PARAMETER <- c(df1, df2)
+  names(PARAMETER) <- c("num df", "denom df")
+  
+ if(sum(!completeObs) > 0){
+if(sum(!completeObs)==1){cat("\n", paste("NOTE: ", sum(!completeObs), " of ", sum(!completeObs)+length(y), "observations was removed due to missingness."), "\n")
+}else  {cat("\n", paste("NOTE: ", sum(!completeObs), " of ", sum(!completeObs)+length(y), "observations were removed due to missingness."), "\n")}
+}
+  
+  structure(list(statistic = Ftest, parameter = PARAMETER, 
+                 p.value = p.value, method = METHOD, data.name = DNAME), class = "htest")
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

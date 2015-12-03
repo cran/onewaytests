@@ -8,13 +8,15 @@ A Function to Perform Welch's Heteroscedastic F Test and Welch's Heteroscedastic
 \code{welch.test} performs Welch's Heteroscedastic F test and Welch's Heteroscedastic F Test with trimmed mean and winsorized variance.
 }
 
-\usage{welch.test(y, group, rate = 0)}
+\usage{welch.test(y, group, rate = 0, na.rm = TRUE)}
 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{y}{a numeric vector of data values.}
   \item{group}{a vector or factor object giving the group for the corresponding elements of y.} 
   \item{rate}{the rate of observations trimmed and winsorized from each tail of the distribution. If rate = 0, it performs Welch's Heteroscedastic F test. Otherwise, Welch's Heteroscedastic F Test with trimmed mean and winsorized variance is performed. Default is set to rate = 0.} 
+  \item{na.rm}{a logical value indicating whether NA values should be stripped before the computation proceeds.}
+
 }
 
 %\details{
@@ -23,12 +25,9 @@ A Function to Perform Welch's Heteroscedastic F Test and Welch's Heteroscedastic
 
 
 \value{
-Returns a list containing following elements:
-\item{statistic}{the corresponding test statistic.}
-\item{df1}{the first degrees of freedom of the approximate F distribution of the test statistic.}
-\item{df2}{the second degrees of freedom of the approximate F distribution of the test statistic.}
+A list with class "htest" containing the following components:\item{statistic}{the value of the test statistic with a name describing it.}
+\item{parameter}{the parameter(s) of the approximate F distribution of the test statistic.}
 \item{p.value}{the p-value of the test.}
-
 }
 
 \references{

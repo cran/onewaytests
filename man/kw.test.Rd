@@ -8,13 +8,13 @@ A Function to Perform Kruskal-Wallis Rank Sum Test
 \code{kw.test} performs Kruskal-Wallis rank sum test.
 }
 
-\usage{kw.test(y, group)}
+\usage{kw.test(y, group, na.rm = TRUE)}
 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{y}{a numeric vector of data values.}
   \item{group}{a vector or factor object giving the group for the corresponding elements of y.} 
-
+  \item{na.rm}{a logical value indicating whether NA values should be stripped before the computation proceeds.}
 }
 
 %\details{
@@ -23,9 +23,8 @@ A Function to Perform Kruskal-Wallis Rank Sum Test
 
 
 \value{
-Returns a list containing following elements:
-\item{statistic}{the Kruskal-Wallis rank sum statistic.}
-\item{df}{the degrees of freedom of the approximate chi-squared distribution of the test statistic.}
+A list with class "htest" containing the following components:\item{statistic}{the Kruskal-Wallis rank sum statistic.}
+\item{parameter}{the parameter(s) of the approximate chi-squared distribution of the test statistic.}
 \item{p.value}{the p-value of the test.}
 
 }

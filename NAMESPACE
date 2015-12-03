@@ -1,5 +1,5 @@
 export(bf.test, ag.test, james.test, welch.test, kw.test, mood.test, aov.test)
-importFrom("stats", var, pchisq, pf, qchisq, chisq.test, median)
+importFrom("stats", var, pchisq, pf, qchisq, chisq.test, median,complete.cases)
 
 
 

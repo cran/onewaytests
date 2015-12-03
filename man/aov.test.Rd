@@ -8,12 +8,13 @@ A Function to Perform One-Way Analysis of Variance.
 \code{aov.test} performs one-way analysis of variance.
 }
 
-\usage{aov.test(y, group)}
+\usage{aov.test(y, group, na.rm = TRUE)}
 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{y}{a numeric vector of data values.}
   \item{group}{a vector or factor object giving the group for the corresponding elements of y.} 
+  \item{na.rm}{a logical value indicating whether NA values should be stripped before the computation proceeds.}
 
 }
 
@@ -23,10 +24,8 @@ A Function to Perform One-Way Analysis of Variance.
 
 
 \value{
-Returns a list containing following elements:
-\item{statistic}{the analysis of variance test statistic.}
-\item{df1}{the first degrees of freedom of the approximate F distribution of the test statistic.}
-\item{df2}{the second degrees of freedom of the approximate F distribution of the test statistic.}
+A list with class "htest" containing the following components:\item{statistic}{the analysis of variance test statistic.}
+\item{parameter}{the parameter(s) of the approximate F distribution of the test statistic.}
 \item{p.value}{the p-value of the test.}
 
 }
