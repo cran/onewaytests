@@ -24,7 +24,7 @@ A Function to Perform Alexander-Govern Test
 
 
 \value{
-A list with class "htest" containing the following components:\item{statistic}{the Alexander-Govern statistic.}
+A list with class "htest" containing the following components:\item{statistic}{the Alexander-Govern test statistic.}
 \item{parameter}{the parameter(s) of the approximate chi-squared distribution of the test statistic.}
 \item{p.value}{the p-value of the test.}
 

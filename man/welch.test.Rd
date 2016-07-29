@@ -2,10 +2,10 @@
 \alias{welch.test}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-A Function to Perform Welch's Heteroscedastic F Test and Welch's Heteroscedastic F Test with Trimmed Mean and Winsorized Variance
+A Function to Perform Welch's Heteroscedastic F Test and Welch's Heteroscedastic F Test with Trimmed Means and Winsorized Variances
 }
 \description{
-\code{welch.test} performs Welch's Heteroscedastic F test and Welch's Heteroscedastic F Test with trimmed mean and winsorized variance.
+\code{welch.test} performs Welch's heteroscedastic F test and Welch's heteroscedastic F test with trimmed means and Winsorized variances.
 }
 
 \usage{welch.test(y, group, rate = 0, na.rm = TRUE)}
@@ -14,7 +14,7 @@ A Function to Perform Welch's Heteroscedastic F Test and Welch's Heteroscedastic
 \arguments{
   \item{y}{a numeric vector of data values.}
   \item{group}{a vector or factor object giving the group for the corresponding elements of y.} 
-  \item{rate}{the rate of observations trimmed and winsorized from each tail of the distribution. If rate = 0, it performs Welch's Heteroscedastic F test. Otherwise, Welch's Heteroscedastic F Test with trimmed mean and winsorized variance is performed. Default is set to rate = 0.} 
+  \item{rate}{the rate of observations trimmed and winsorized from each tail of the distribution. If rate = 0, it performs Welch's heteroscedastic F test. Otherwise, Welch's heteroscedastic F test with trimmed means and Winsorized variances is performed. Default is set to rate = 0.} 
   \item{na.rm}{a logical value indicating whether NA values should be stripped before the computation proceeds.}
 
 }

@@ -7,7 +7,7 @@ kw.test <- function(y, group, na.rm = TRUE){
   }
   df <- data.frame(Response = y, Group = group)
   DNAME <- "y vs group"
-  METHOD <- "Kruskal-Wallis Rank Sum Test"
+  METHOD <- "Kruskal-Wallis Test"
 
   n.i<- Rmean.i<- KW.noties<- ties<-correction<- KW.stat<- p.value<-NULL
   ranks = rank(y)

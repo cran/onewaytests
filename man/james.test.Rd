@@ -2,10 +2,10 @@
 \alias{james.test}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-A Function to Perform James's Second-Order Test
+A Function to Perform James Second Order Test
 }
 \description{
-\code{james.test} performs James's second-order test.
+\code{james.test} performs James second order test.
 }
 
 \usage{james.test(y, group, alpha = 0.05, na.rm = TRUE)}
@@ -26,8 +26,8 @@ A Function to Perform James's Second-Order Test
 
 
 \value{
-A list with class "htest" containing the following components:\item{statistic}{the James's Second-Order Test statistic.}
-\item{parameter}{the critical value of the James's Second-Order Test statistic.}
+A list with class "htest" containing the following components:\item{statistic}{the James second order test statistic.}
+\item{parameter}{the critical value of the James second order test statistic.}
 
 }
 

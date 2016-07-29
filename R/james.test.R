@@ -7,7 +7,7 @@ if (na.rm){
   }
   df <- data.frame(Response = y, Group = group)
   DNAME <- "y vs group"
-  METHOD <- "James's Second-Order Test"
+  METHOD <- "James Second Order Test"
 
   n <- length(y)
   x.levels <- levels(factor(group))

@@ -2,7 +2,7 @@
 \alias{aov.test}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-A Function to Perform One-Way Analysis of Variance.
+A Function to Perform One-Way Analysis of Variance
 }
 \description{
 \code{aov.test} performs one-way analysis of variance.

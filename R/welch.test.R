@@ -11,7 +11,7 @@ welch.test <- function(y, group, rate = 0, na.rm = TRUE) {
   DNAME <- "y vs group"
 
 if (rate==0){METHOD <- "Welch's Heteroscedastic F Test"
-}else{METHOD <- "Welch's Heteroscedastic F Test with Trimmed Mean and Winsorized Variance"}
+}else{METHOD <- "Welch's Heteroscedastic F Test with Trimmed Means and Winsorized Variances"}
   
 
 

@@ -6,7 +6,7 @@ bf.test <- function (y, group, na.rm = TRUE){
   }
   df <- data.frame(Response = y, Group = group)
   DNAME <- "y vs group"
-  METHOD <- "Brown-Forshyte Test"
+  METHOD <- "Brown-Forsythe Test"
   n <- length(y)
   x.levels <- levels(factor(group))
   y.vars <- y.means <- m <- y.n <- NULL

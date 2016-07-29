@@ -2,10 +2,10 @@
 \alias{kw.test}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-A Function to Perform Kruskal-Wallis Rank Sum Test
+A Function to Perform Kruskal-Wallis Test
 }
 \description{
-\code{kw.test} performs Kruskal-Wallis rank sum test.
+\code{kw.test} performs Kruskal-Wallis test.
 }
 
 \usage{kw.test(y, group, na.rm = TRUE)}
@@ -23,7 +23,7 @@ A Function to Perform Kruskal-Wallis Rank Sum Test
 
 
 \value{
-A list with class "htest" containing the following components:\item{statistic}{the Kruskal-Wallis rank sum statistic.}
+A list with class "htest" containing the following components:\item{statistic}{the Kruskal-Wallis test statistic.}
 \item{parameter}{the parameter(s) of the approximate chi-squared distribution of the test statistic.}
 \item{p.value}{the p-value of the test.}
 

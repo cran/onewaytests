@@ -12,8 +12,8 @@ Two or more samples in one-way independent groups design are compared via differ
 \tabular{ll}{
 Package: \tab onewaytests\cr
 Type: \tab Package\cr
-Version: \tab 1.1\cr
-Date: \tab 2015-12-03\cr
+Version: \tab 1.2\cr
+Date: \tab 2016-07-29\cr
 License: \tab GPL (>=2)\cr
 }
 }
