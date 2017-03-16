@@ -2,20 +2,24 @@
 \alias{welch.test}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-A Function to Perform Welch's Heteroscedastic F Test and Welch's Heteroscedastic F Test with Trimmed Means and Winsorized Variances
+Welch's Heteroscedastic F Test and Welch's Heteroscedastic F Test with Trimmed Means and Winsorized Variances
 }
 \description{
 \code{welch.test} performs Welch's heteroscedastic F test and Welch's heteroscedastic F test with trimmed means and Winsorized variances.
 }
 
-\usage{welch.test(y, group, rate = 0, na.rm = TRUE)}
+\usage{welch.test(y, group, rate = 0, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{y}{a numeric vector of data values.}
   \item{group}{a vector or factor object giving the group for the corresponding elements of y.} 
   \item{rate}{the rate of observations trimmed and winsorized from each tail of the distribution. If rate = 0, it performs Welch's heteroscedastic F test. Otherwise, Welch's heteroscedastic F test with trimmed means and Winsorized variances is performed. Default is set to rate = 0.} 
+  \item{alpha}{the level of significance to assess the statistical difference. Default is
+set to alpha = 0.05.} 
   \item{na.rm}{a logical value indicating whether NA values should be stripped before the computation proceeds.}
+  \item{verbose}{a logical for printing output to R console.}
+
 
 }
 
@@ -25,9 +29,17 @@ A Function to Perform Welch's Heteroscedastic F Test and Welch's Heteroscedastic
 
 
 \value{
-A list with class "htest" containing the following components:\item{statistic}{the value of the test statistic with a name describing it.}
+A list with class "owt" containing the following components:
+
+\item{statistic}{the value of the test statistic with a name describing it.}
 \item{parameter}{the parameter(s) of the approximate F distribution of the test statistic.}
 \item{p.value}{the p-value of the test.}
+\item{method}{the character string "Welch's Heteroscedastic F Test" or "Welch's Heteroscedastic F Test with Trimmed Means and Winsorized Variances" depending on the choice.}
+\item{rate}{the rate of observations trimmed and winsorized from each tail of the distribution.} 
+\item{y}{a numeric vector of data values in which NA values (if exist) are removed.}
+\item{group}{a vector or factor object giving the group for the corresponding elements of y.} 
+
+
 }
 
 \references{
@@ -38,17 +50,14 @@ Welch, B. L.(1951). On the Comparison of Several Mean Values: An Alternative App
 
 
 \author{
-Osman Dag, Anil Dolgun, N. Meric Konar
+Osman Dag
 }
 
 
 \examples{
 
-welch.test(iris$Sepal.Length, iris$Species, rate=0.1)
-
-y=rnorm(10,5,2)
-group=c(rep(1, times=3),rep("two", times=3), rep(8, times=4))
-welch.test(y, group)
+welch.test(iris$Sepal.Length, iris$Species)
+welch.test(iris$Sepal.Length, iris$Species, rate = 0.1)
 
 }
 

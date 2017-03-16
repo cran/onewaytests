@@ -1,13 +1,15 @@
-kw.test <- function(y, group, na.rm = TRUE){
+kw.test <- function(y, group, alpha = 0.05, na.rm = TRUE, verbose = TRUE){
+
+  dname1 <- deparse(substitute(y))
+  dname2 <- deparse(substitute(group))
+  DNAME <- paste(dname1, "and", dname2)
+  METHOD <- "Kruskal-Wallis Test"
 
  if (na.rm){
     completeObs <- complete.cases(y, group)
     y <- y[completeObs]
     group <- group[completeObs]
   }
-  df <- data.frame(Response = y, Group = group)
-  DNAME <- "y vs group"
-  METHOD <- "Kruskal-Wallis Test"
 
   n.i<- Rmean.i<- KW.noties<- ties<-correction<- KW.stat<- p.value<-NULL
   ranks = rank(y)
@@ -28,15 +30,36 @@ kw.test <- function(y, group, na.rm = TRUE){
   p.value<-pchisq(approx, df=(length(x.levels)-1),lower.tail = FALSE)
   df=(length(x.levels)-1)
 
-  names(approx) <- "X-squared"
-  PARAMETER <- c(df)
-  names(PARAMETER) <- c("df")
-  
-   if(sum(!completeObs) > 0){
-if(sum(!completeObs)==1){cat("\n", paste("NOTE: ", sum(!completeObs), " of ", sum(!completeObs)+length(y), "observations was removed due to missingness."), "\n")
-}else  {cat("\n", paste("NOTE: ", sum(!completeObs), " of ", sum(!completeObs)+length(y), "observations were removed due to missingness."), "\n")}
-}
-  
-  structure(list(statistic = approx, parameter = PARAMETER, 
-                 p.value = p.value, method = METHOD, data.name = DNAME), class = "htest")
+
+if (verbose) {
+            cat("\n", "",METHOD, "\n", 
+                sep = " ")
+            cat("---------------------------------------------------------", 
+                "\n", sep = " ")
+            cat("  data :", DNAME, "\n\n", sep = " ")
+            cat("  statistic  :", approx, "\n", sep = " ")
+            cat("  parameter  :", df, "\n", sep = " ")
+		 cat("  p.value    :", p.value, "\n\n", sep = " ")
+            cat(if (p.value > alpha) {
+                "  Result     : Difference is not statistically significant."
+            }
+            else {
+                "  Result     : Difference is statistically significant."
+            }, "\n")
+            cat("---------------------------------------------------------", 
+                "\n\n", sep = " ")
+        }
+
+
+result <- list()
+result$statistic <- approx
+result$parameter <- df
+result$p.value <- p.value
+result$method <- METHOD 
+result$y <- y
+result$group <- group
+
+attr(result, "class") <- "owt"
+invisible(result)
+
 }

@@ -2,19 +2,23 @@
 \alias{bf.test}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-A Function to Perform Brown-Forsythe Test
+Brown-Forsythe Test
 }
 \description{
 \code{bf.test} performs Brown-Forsythe test.
 }
 
-\usage{bf.test(y, group, na.rm = TRUE)}
+\usage{bf.test(y, group, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{y}{a numeric vector of data values.}
   \item{group}{a vector or factor object giving the group for the corresponding elements of y.} 
+  \item{alpha}{the level of significance to assess the statistical difference. Default is
+set to alpha = 0.05.} 
   \item{na.rm}{a logical value indicating whether NA values should be stripped before the computation proceeds.}
+  \item{verbose}{a logical for printing output to R console.}
+
 }
 
 %\details{
@@ -23,9 +27,12 @@ A Function to Perform Brown-Forsythe Test
 
 
 \value{
-A list with class "htest" containing the following components:\item{statistic}{the Brown-Forsythe test statistic.}
+A list with class "owt" containing the following components:\item{statistic}{the Brown-Forsythe test statistic.}
 \item{parameter}{the parameter(s) of the approximate F distribution of the test statistic.}
 \item{p.value}{the p-value of the test.}
+\item{method}{the character string "Brown-Forsythe Test".}
+\item{y}{a numeric vector of data values in which NA values (if exist) are removed.}
+\item{group}{a vector or factor object giving the group for the corresponding elements of y.} 
 
 }
 
@@ -39,17 +46,13 @@ Brown, M. B., Forsythe. A. B. (1974b). Robust tests for the equality of variance
 
 
 \author{
-Osman Dag, Anil Dolgun, N. Meric Konar
+Osman Dag
 }
 
 
 
 \examples{
-bf.test(iris$Sepal.Width,iris$Species)
-
-y=rnorm(10,5,2)
-group=c(rep(1, times=3),rep("two", times=3), rep(8, times=4))
-bf.test(y, group)
+bf.test(iris$Sepal.Width, iris$Species)
 }
 
 \keyword{functions}

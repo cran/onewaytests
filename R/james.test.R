@@ -1,13 +1,15 @@
-james.test <- function(y, group, alpha=0.05, na.rm = TRUE) {
+james.test <- function(y, group, alpha = 0.05, na.rm = TRUE, verbose = TRUE) {
   
+  dname1 <- deparse(substitute(y))
+  dname2 <- deparse(substitute(group))
+  DNAME <- paste(dname1, "and", dname2)
+  METHOD <- "James Second Order Test"
+
 if (na.rm){
     completeObs <- complete.cases(y, group)
     y <- y[completeObs]
     group <- group[completeObs]
   }
-  df <- data.frame(Response = y, Group = group)
-  DNAME <- "y vs group"
-  METHOD <- "James Second Order Test"
 
   n <- length(y)
   x.levels <- levels(factor(group))
@@ -78,15 +80,34 @@ CV <- c+((1/2)*(3*chi4+chi2)*Tsum)+((1/16)*((3*chi4+chi2)^2)*(1-((J-3)/c))*(Tsum
 result<-( if (Jtest >= CV) "Reject H_0" else "Fail to reject H_0")
 
 
-names(Jtest) <- "Jtest"
-names(CV) <- c("CriticalValue")
-  
- if(sum(!completeObs) > 0){
-if(sum(!completeObs)==1){cat("\n", paste("NOTE: ", sum(!completeObs), " of ", sum(!completeObs)+length(y), "observations was removed due to missingness."), "\n")
-}else  {cat("\n", paste("NOTE: ", sum(!completeObs), " of ", sum(!completeObs)+length(y), "observations were removed due to missingness."), "\n")}
-}
+if (verbose) {
+            cat("\n", "",METHOD, "\n", 
+                sep = " ")
+            cat("---------------------------------------------------------------", 
+                "\n", sep = " ")
+            cat("  data :", DNAME, "\n\n", sep = " ")
+            cat("  statistic     :", Jtest, "\n", sep = " ")
+            cat("  criticalValue :", CV, "\n\n", sep = " ")
+            cat(if (Jtest < CV) {
+                "  Result        : Difference is not statistically significant."
+            }
+            else {
+                "  Result        : Difference is statistically significant."
+            }, "\n")
+            cat("---------------------------------------------------------------", 
+                "\n\n", sep = " ")
+        }
 
-structure(list(statistic = Jtest, parameter= CV, method = METHOD, data.name = DNAME), class = "htest")
+result <- list()
+result$statistic <- Jtest
+result$criticalValue  <- CV
+result$method <- METHOD 
+result$y <- y
+result$group <- group
+
+attr(result, "class") <- "jt"
+invisible(result)
+
 
 }
 
