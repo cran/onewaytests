@@ -1,7 +1,12 @@
-gplot <- function (y, group, type = c("boxplot", "errorbar"), violin = TRUE, xlab = NULL, ylab = NULL, title = NULL, width = NULL, option = c("se", "sd"), na.rm = TRUE){
+gplot <- function (formula, data, type = c("boxplot", "errorbar"), violin = TRUE, xlab = NULL, ylab = NULL, title = NULL, width = NULL, option = c("se", "sd"), na.rm = TRUE){
 
-dname1 <- deparse(substitute(y))
-dname2 <- deparse(substitute(group))
+  dp=as.character(formula)
+  DNAME <- paste(dp[[2L]], "and", dp[[3L]])
+dname1<-dp[[2L]]
+dname2<-dp[[3L]]
+
+  y=data[,dp[[2L]]]
+  group=data[,dp[[3L]]]
 
 if (na.rm) {
         completeObs <- complete.cases(y, group)

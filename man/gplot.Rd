@@ -8,13 +8,13 @@ Box-and-Whisker Plots and Error Bars
 \code{gplot} produce box-and-whisker plots and error bars of the given grouped values.
 }
 
-\usage{gplot(y, group, type = c("boxplot", "errorbar"), violin = TRUE, xlab = NULL, 
+\usage{gplot(formula, data, type = c("boxplot", "errorbar"), violin = TRUE, xlab = NULL, 
   ylab = NULL, title = NULL, width = NULL, option = c("se", "sd"), na.rm = TRUE)}
 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{y}{a numeric vector of data values.}
-  \item{group}{a vector or factor object giving the group for the corresponding elements of y.} 
+  \item{formula}{a formula of the form \code{lhs ~ rhs} where \code{lhs} gives the sample values and \code{rhs} the corresponding groups.}
+  \item{data}{a data frame containing the variables in the formula \code{formula}} 
   \item{type}{a character string to select one of the plots. "boxplot": box-and-whisker plot, "errorbar": error bar.} 
   \item{violin}{a logical adding violin plot on box-and-whisker plot.}
   \item{xlab}{a label for the x axis, defaults to a description of x.} 
@@ -46,10 +46,10 @@ Osman Dag
 
 \examples{
 
-gplot(iris$Sepal.Width, iris$Species, type = "boxplot")
-gplot(iris$Sepal.Width, iris$Species, type = "boxplot", violin = FALSE)
-gplot(iris$Sepal.Width, iris$Species, type = "errorbar", option = "se")
-gplot(iris$Sepal.Width, iris$Species, type = "errorbar", option = "sd")
+gplot(Sepal.Length ~ Species, data = iris, type = "boxplot")
+gplot(Sepal.Length ~ Species, data = iris, type = "boxplot", violin = FALSE)
+gplot(Sepal.Length ~ Species, data = iris, type = "errorbar", option = "se")
+gplot(Sepal.Length ~ Species, data = iris, type = "errorbar", option = "sd")
 
 }
 

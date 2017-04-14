@@ -1,18 +1,19 @@
 
-welch.test <- function(y, group, rate = 0, alpha = 0.05, na.rm = TRUE, verbose = TRUE) {
+welch.test <- function(formula, data, rate = 0, alpha = 0.05, na.rm = TRUE, verbose = TRUE) {
 
-  dname1 <- deparse(substitute(y))
-  dname2 <- deparse(substitute(group))
-  DNAME <- paste(dname1, "and", dname2)
+  dp=as.character(formula)
+  DNAME <- paste(dp[[2L]], "and", dp[[3L]])
 
 if (rate==0){METHOD <- "Welch's Heteroscedastic F Test"
 }else{METHOD <- "Welch's Heteroscedastic F Test with Trimmed Means and Winsorized Variances"}
 
  if (na.rm){
-    completeObs <- complete.cases(y, group)
-    y <- y[completeObs]
-    group <- group[completeObs]
+    completeObs <- complete.cases(data)
+    data <- data[completeObs,]
   }
+
+  y=data[,dp[[2L]]]
+  group=data[,dp[[3L]]]
 
 
 trim=function(x,rate){
@@ -98,10 +99,11 @@ result <- list()
 result$statistic <- Ftest
 result$parameter <- c(df1,df2)
 result$p.value <- p.value
+result$alpha <- alpha
 result$method <- METHOD 
 result$rate <- rate
-result$y <- y
-result$group <- group
+result$data <- data
+result$formula <- formula
 
 
 attr(result, "class") <- "owt"

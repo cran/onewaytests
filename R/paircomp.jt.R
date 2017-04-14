@@ -1,8 +1,16 @@
 
-multcomp.jt<- function(x, adjust.method = c("bonferroni", "none"), alpha = 0.05,...){
+paircomp.jt<- function(x, adjust.method = c("bonferroni", "none"),...){
 
-y <- x$y
-group <- x$group
+if(x$statistic<x$criticalValue) stop(paste("Pairwise comparisons could not be performed since difference is not statistically significant (alpha = ",x$alpha,").",sep = ""))
+
+data<-x$data
+
+dp=as.character(x$formula)
+
+y=data[,dp[[2L]]]
+group=as.factor(data[,dp[[3L]]])
+
+alpha <- x$alpha
 id <- levels(group)
 comb <- t(combn((id), 2))
 comb2 <- dim(comb)[1]
@@ -21,11 +29,10 @@ method.name = paste("No Correction (alpha = ",alpha_adj,")",sep = "")
 statistics <- NULL
 cvs <- NULL
 for (i in 1:comb2){
-    y_sub <- y[(group == comb[i,1])|(group == comb[i,2])]
-    group_sub <- group[(group == comb[i,1])|(group == comb[i,2])]
+    data_sub <- data[(group == comb[i,1])|(group == comb[i,2]),]
 if (x$method == "James Second Order Test") {
-statistics <- c(statistics , james.test(y_sub,group_sub,alpha=alpha_adj,verbose=F)$statistic)
-cvs <- c(cvs , james.test(y_sub,group_sub,alpha=alpha_adj,verbose=F)$criticalValue)
+statistics <- c(statistics , james.test(x$formula,data_sub,alpha=alpha_adj,verbose=F)$statistic)
+cvs <- c(cvs , james.test(x$formula,data_sub, alpha=alpha_adj,verbose=F)$criticalValue)
 
 }
 }

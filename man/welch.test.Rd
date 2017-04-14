@@ -8,12 +8,12 @@ Welch's Heteroscedastic F Test and Welch's Heteroscedastic F Test with Trimmed M
 \code{welch.test} performs Welch's heteroscedastic F test and Welch's heteroscedastic F test with trimmed means and Winsorized variances.
 }
 
-\usage{welch.test(y, group, rate = 0, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
+\usage{welch.test(formula, data, rate = 0, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{y}{a numeric vector of data values.}
-  \item{group}{a vector or factor object giving the group for the corresponding elements of y.} 
+  \item{formula}{a formula of the form \code{lhs ~ rhs} where \code{lhs} gives the sample values and \code{rhs} the corresponding groups.}
+  \item{data}{a data frame containing the variables in the formula \code{formula}} 
   \item{rate}{the rate of observations trimmed and winsorized from each tail of the distribution. If rate = 0, it performs Welch's heteroscedastic F test. Otherwise, Welch's heteroscedastic F test with trimmed means and Winsorized variances is performed. Default is set to rate = 0.} 
   \item{alpha}{the level of significance to assess the statistical difference. Default is
 set to alpha = 0.05.} 
@@ -34,10 +34,12 @@ A list with class "owt" containing the following components:
 \item{statistic}{the value of the test statistic with a name describing it.}
 \item{parameter}{the parameter(s) of the approximate F distribution of the test statistic.}
 \item{p.value}{the p-value of the test.}
+\item{alpha}{the level of significance to assess the statistical difference.} 
 \item{method}{the character string "Welch's Heteroscedastic F Test" or "Welch's Heteroscedastic F Test with Trimmed Means and Winsorized Variances" depending on the choice.}
 \item{rate}{the rate of observations trimmed and winsorized from each tail of the distribution.} 
-\item{y}{a numeric vector of data values in which NA values (if exist) are removed.}
-\item{group}{a vector or factor object giving the group for the corresponding elements of y.} 
+\item{data}{a data frame containing the variables in which NA values (if exist) are removed.}
+\item{formula}{a formula of the form \code{lhs ~ rhs} where \code{lhs} gives the sample values and \code{rhs} the corresponding groups.}
+
 
 
 }
@@ -56,8 +58,8 @@ Osman Dag
 
 \examples{
 
-welch.test(iris$Sepal.Length, iris$Species)
-welch.test(iris$Sepal.Length, iris$Species, rate = 0.1)
+welch.test(Sepal.Length ~ Species, data = iris)
+welch.test(Sepal.Length ~ Species, data = iris, rate = 0.1)
 
 }
 

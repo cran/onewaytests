@@ -1,8 +1,14 @@
 
-nor.test <- function(y, group, method = c("SW", "SF", "KS", "AD", "CVM", "PT"), alpha = 0.05, plot = c("qqplot-histogram", "qqplot", "histogram"), mfrow = NULL, na.rm = TRUE, verbose = TRUE){ 
+nor.test <- function(formula, data, method = c("SW", "SF", "LT", "AD", "CVM", "PT"), alpha = 0.05, plot = c("qqplot-histogram", "qqplot", "histogram"), mfrow = NULL, na.rm = TRUE, verbose = TRUE){ 
 
-    dname1 <- deparse(substitute(y))
-    dname2 <- deparse(substitute(group))
+  dp=as.character(formula)
+  DNAME <- paste(dp[[2L]], "and", dp[[3L]])
+  y=data[,dp[[2L]]]
+  group=data[,dp[[3L]]]
+
+  dname1<-dp[[2L]]
+  dname2<-dp[[3L]]
+
     group = as.factor(group)
     k = length(levels(group))
     if (length(y) != length(group)) {
@@ -37,13 +43,13 @@ if (method == "SF") {
 method.name = "Shapiro-Francia Normality Test"
 }
 
-if (method == "KS") {
+if (method == "LT") {
         for (i in 1:k) {
         kk = lillie.test(y[which(group == (levels(group)[i]))])
         stor1 = c(stor1, kk$statistic)
         stor2 = c(stor2, kk$p)
     }
-method.name = "Kolmogorov-Smirnov Normality Test"
+method.name = "Lilliefors (Kolmogorov-Smirnov) Normality Test"
 }
 
 if (method == "AD") {
@@ -82,16 +88,16 @@ method.name = "Pearson Chi-square Normality Test"
 
  if (verbose) {
         cat("\n", "",method.name, "\n", sep = " ")
-        cat("---------------------------------------------", 
+        cat("--------------------------------------------------", 
             "\n", sep = " ")
         cat("  data :", dname1, "and", dname2, "\n\n", sep = " ")
           
         print(store)
-          cat("---------------------------------------------", 
+          cat("--------------------------------------------------", 
             "\n\n", sep = " ")
     }
 
-    invisible(store)
+    
 
 if (!is.null(plot)){
 plot = match.arg(plot)
@@ -137,6 +143,6 @@ par(mfrow = c(2,k))
 }
 }
 
-
+invisible(store)
 }
 

@@ -8,12 +8,12 @@ Kruskal-Wallis Test
 \code{kw.test} performs Kruskal-Wallis test.
 }
 
-\usage{kw.test(y, group, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
+\usage{kw.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{y}{a numeric vector of data values.}
-  \item{group}{a vector or factor object giving the group for the corresponding elements of y.} 
+  \item{formula}{a formula of the form \code{lhs ~ rhs} where \code{lhs} gives the sample values and \code{rhs} the corresponding groups.}
+  \item{data}{a data frame containing the variables in the formula \code{formula}} 
   \item{alpha}{the level of significance to assess the statistical difference. Default is
 set to alpha = 0.05.} 
   \item{na.rm}{a logical value indicating whether NA values should be stripped before the computation proceeds.}
@@ -31,8 +31,10 @@ A list with class "owt" containing the following components:
 \item{statistic}{the Kruskal-Wallis test statistic.}
 \item{parameter}{the parameter(s) of the approximate chi-squared distribution of the test statistic.}
 \item{p.value}{the p-value of the test.}
-\item{y}{a numeric vector of data values in which NA values (if exist) are removed.}
-\item{group}{a vector or factor object giving the group for the corresponding elements of y.} 
+\item{alpha}{the level of significance to assess the statistical difference.} 
+\item{data}{a data frame containing the variables in which NA values (if exist) are removed.}
+\item{formula}{a formula of the form \code{lhs ~ rhs} where \code{lhs} gives the sample values and \code{rhs} the corresponding groups.}
+
 }
 
 \references{
@@ -50,7 +52,7 @@ Anil Dolgun
 
 \examples{
 
-kw.test(iris$Sepal.Length, iris$Species)
+kw.test(Sepal.Length ~ Species, data = iris)
 
 }
 

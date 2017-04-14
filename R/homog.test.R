@@ -1,9 +1,13 @@
 
-homog.test <- function(y, group, method = c("Levene", "Bartlett", "Fligner"), alpha = 0.05, na.rm = TRUE, verbose = TRUE){
+homog.test <- function(formula, data, method = c("Levene", "Bartlett", "Fligner"), alpha = 0.05, na.rm = TRUE, verbose = TRUE){
 
-dname1 <- deparse(substitute(y))
-dname2 <- deparse(substitute(group))
-DNAME <- paste(dname1, "and", dname2)
+
+  dp=as.character(formula)
+  DNAME <- paste(dp[[2L]], "and", dp[[3L]])
+  y=data[,dp[[2L]]]
+  group=data[,dp[[3L]]]
+
+
 method = match.arg(method)
 if (na.rm) {
         completeObs <- complete.cases(y, group)

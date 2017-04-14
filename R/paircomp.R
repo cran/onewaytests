@@ -1,26 +1,33 @@
-multcomp <- function(x,...) UseMethod("multcomp")
+paircomp <- function(x,...) UseMethod("paircomp")
 
-multcomp.default <- function(x,...) multcomp.owt(x,...)
+paircomp.default <- function(x,...) paircomp.owt(x,...)
 
 
-multcomp.owt<- function(x, adjust.method = c("bonferroni", "holm", "hochberg", "hommel", "BH", 
-  "BY", "fdr", "none"), alpha = 0.05,...){
+paircomp.owt<- function(x, adjust.method = c("bonferroni", "holm", "hochberg", "hommel", "BH", 
+  "BY", "fdr", "none"),...){
 
-y <- x$y
-group <- x$group
+if(x$p.value>x$alpha) stop(paste("Pairwise comparisons could not be performed since difference is not statistically significant (alpha = ",x$alpha,").",sep = ""))
+
+data<-x$data
+
+dp=as.character(x$formula)
+
+  y=data[,dp[[2L]]]
+  group=as.factor(data[,dp[[3L]]])
+
+alpha <- x$alpha
 id <- levels(group)
 comb <- t(combn((id), 2))
 comb2 <- dim(comb)[1]
 
 pval <- NULL
 for (i in 1:comb2){
-    y_sub <- y[(group == comb[i,1])|(group == comb[i,2])]
-    group_sub <- group[(group == comb[i,1])|(group == comb[i,2])]
-if (x$method == "One-Way Analysis of Variance") pval <- c(pval, aov.test(y_sub,group_sub,verbose=F)$p.value)
-if (x$method == "Alexander-Govern Test") pval <- c(pval, ag.test(y_sub,group_sub,verbose=F)$p.value)
-if (x$method == "Brown-Forsythe Test") pval <- c(pval, bf.test(y_sub,group_sub,verbose=F)$p.value)
-if (x$method == "Kruskal-Wallis Test") pval <- c(pval, kw.test(y_sub,group_sub,verbose=F)$p.value)
-if ((x$method == "Welch's Heteroscedastic F Test")|(x$method == "Welch's Heteroscedastic F Test with Trimmed Means and Winsorized Variances")) pval <- c(pval, welch.test(y_sub,group_sub, rate=x$rate,verbose=F)$p.value)
+    data_sub <- data[(group == comb[i,1])|(group == comb[i,2]),]
+if (x$method == "One-Way Analysis of Variance") pval <- c(pval, aov.test(x$formula,data_sub,verbose=F)$p.value)
+if (x$method == "Alexander-Govern Test") pval <- c(pval, ag.test(x$formula,data_sub,verbose=F)$p.value)
+if (x$method == "Brown-Forsythe Test") pval <- c(pval, bf.test(x$formula,data_sub,verbose=F)$p.value)
+if (x$method == "Kruskal-Wallis Test") pval <- c(pval, kw.test(x$formula,data_sub,verbose=F)$p.value)
+if ((x$method == "Welch's Heteroscedastic F Test")|(x$method == "Welch's Heteroscedastic F Test with Trimmed Means and Winsorized Variances")) pval <- c(pval, welch.test(x$formula,data_sub, rate=x$rate,verbose=F)$p.value)
 
 
 }

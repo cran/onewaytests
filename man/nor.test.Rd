@@ -8,15 +8,15 @@ Normality Tests
 \code{nor.test} performs normality tests including Shapiro-Wilk, Shapiro-Francia, Kolmogorov-Smirnov, Anderson-Darling, Cramer-von Mises, Pearson Chi-square tests, and also assess the normality of each group through plots.
 }
 
-\usage{nor.test(y, group, method = c("SW", "SF", "KS", "AD", "CVM", "PT"),  alpha = 0.05, 
-  plot = c("qqplot-histogram", "qqplot", "histogram"), mfrow = NULL, na.rm = TRUE,
-  verbose = TRUE)}
+\usage{nor.test(formula, data, method = c("SW", "SF", "LT", "AD", "CVM", "PT"), 
+  alpha = 0.05, plot = c("qqplot-histogram", "qqplot", "histogram"), mfrow = NULL, 
+  na.rm = TRUE, verbose = TRUE)}
 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{y}{a numeric vector of data values.}
-  \item{group}{a vector or factor object giving the group for the corresponding elements of y.} 
-  \item{method}{a character string to select one of the normality tests. "SW": Shapiro-Wilk test, "SF": Shapiro-Francia test, "KS": Komogorov-Smirnov test, "AD": Anderson-Darling test, "CVM": Cramer-von Mises test, "PT": Pearson Chi-square test.} 
+  \item{formula}{a formula of the form \code{lhs ~ rhs} where \code{lhs} gives the sample values and \code{rhs} the corresponding groups.}
+  \item{data}{a data frame containing the variables in the formula \code{formula}} 
+  \item{method}{a character string to select one of the normality tests. "SW": Shapiro-Wilk test, "SF": Shapiro-Francia test, "LT": Lilliefors (Kolmogorov-Smirnov) test, "AD": Anderson-Darling test, "CVM": Cramer-von Mises test, "PT": Pearson Chi-square test.} 
   \item{alpha}{the level of significance to assess normality. Default is set to alpha = 0.05.}
   \item{plot}{a character string to select one of the plots including qqplot-histogram, qqplot, histogram. The red line is the density line of normal distribution.}
   \item{mfrow}{a two element vector to draw subsequent figures.}
@@ -49,8 +49,8 @@ Osman Dag
 
 \examples{
 
-nor.test(iris$Sepal.Width, iris$Species, method = "SW", plot = "qqplot-histogram")
-nor.test(iris$Sepal.Width, iris$Species, method = "SF", plot = "qqplot", mfrow = c(1,3))
+nor.test(Sepal.Length ~ Species, data = iris, method = "SW", plot = "qqplot-histogram")
+nor.test(Sepal.Length ~ Species, data = iris, method = "SF", plot = "qqplot", mfrow = c(1,3))
 
 }
 

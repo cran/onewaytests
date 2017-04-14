@@ -1,26 +1,12 @@
 
-describe <- function(y, group=NULL){
+describe <- function(formula, data){
+
+  dp=as.character(formula)
+  DNAME <- paste(dp[[2L]], "and", dp[[3L]])
+  y=data[,dp[[2L]]]
+  group=data[,dp[[3L]]]
 
 
-if (is.null(group)){
-dname <- deparse(substitute(y))
-y.NAs <- length(y[is.na(y)])
-completeObs <- complete.cases(y)
-y <- y[completeObs]
-y.means <- mean(y)
-y.n <- length(y)
-y.medians <- median(y)
-y.firstqs <- as.numeric(quantile(y)[2])
-y.thirdqs <- as.numeric(quantile(y)[4])
-y.mins <- min(y)
-y.maxs<- max(y)
-y.sds <- sd(y)
-y.skew<- skewness(y)
-y.kurtosis <- kurtosis(y)
-out=as.data.frame(cbind(y.n,y.means,y.sds,y.medians,y.mins,y.maxs,y.firstqs,y.thirdqs,y.skew,y.kurtosis,y.NAs))
-
-rownames(out)<-dname
-}else{
 
 if (length(y)!=length(group)) stop("Lengths of y and group variables are not equal.")
 
@@ -52,7 +38,7 @@ for (i in x.levels) {
     }
 out=as.data.frame(cbind(y.n,y.means,y.sds,y.medians,y.mins,y.maxs,y.firstqs,y.thirdqs,y.skew,y.kurtosis,y.NAs))
 
-}
+
 colnames(out) = c("n", "Mean", "Std.Dev", "Median", "Min", "Max", "25th","75th","Skewness","Kurtosis","NA")
 return(out) 
 

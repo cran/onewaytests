@@ -1,16 +1,18 @@
-ag.test <- function(y, group, alpha = 0.05, na.rm = TRUE, verbose = TRUE) {
+ag.test <- function(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE) {
 
-  dname1 <- deparse(substitute(y))
-  dname2 <- deparse(substitute(group))
-  DNAME <- paste(dname1, "and", dname2)
+
+  dp=as.character(formula)
+  DNAME <- paste(dp[[2L]], "and", dp[[3L]])
 
   METHOD <- "Alexander-Govern Test"
 
  if (na.rm){
-    completeObs <- complete.cases(y, group)
-    y <- y[completeObs]
-    group <- group[completeObs]
+    completeObs <- complete.cases(data)
+    data <- data[completeObs,]
   }
+
+  y=data[,dp[[2L]]]
+  group=data[,dp[[3L]]]
 
 
 
@@ -72,9 +74,12 @@ result <- list()
 result$statistic <- approx
 result$parameter <- df
 result$p.value <- p.value
+result$alpha <- alpha
 result$method <- METHOD 
-result$y <- y
-result$group <- group
+result$data <- data
+result$formula <- formula
+
+
 
 attr(result, "class") <- "owt"
 invisible(result)

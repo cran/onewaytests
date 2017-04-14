@@ -8,12 +8,12 @@ Descriptive Statistics
 \code{describe} produces basic descritive statistics including sample size, mean, standard deviation, median, minimum value, maximum value, 25th quantile, 75th quantile, skewness, kurtosis, the number of missing value.
 }
 
-\usage{describe(y, group = NULL)}
+\usage{describe(formula, data)}
 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{y}{a numeric vector of data values.}
-  \item{group}{a vector or factor object giving the group for the corresponding elements of y.} 
+  \item{formula}{a formula of the form \code{lhs ~ rhs} where \code{lhs} gives the sample values and \code{rhs} the corresponding groups.}
+  \item{data}{a data frame containing the variables in the formula \code{formula}} 
 }
 
 %\details{
@@ -36,7 +36,7 @@ Osman Dag
 
 \examples{
 
-describe(iris$Sepal.Length, iris$Species)
+describe(Sepal.Length ~ Species, data = iris)
 
 }
 

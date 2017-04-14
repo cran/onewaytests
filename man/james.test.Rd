@@ -8,12 +8,12 @@ James Second Order Test
 \code{james.test} performs James second order test.
 }
 
-\usage{james.test(y, group, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
+\usage{james.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{y}{a numeric vector of data values.}
-  \item{group}{a vector or factor object giving the group for the corresponding elements of y.}
+  \item{formula}{a formula of the form \code{lhs ~ rhs} where \code{lhs} gives the sample values and \code{rhs} the corresponding groups.}
+  \item{data}{a data frame containing the variables in the formula \code{formula}} 
   \item{alpha}{a significance level. Defaults alpha = 0.05.}
    \item{na.rm}{a logical value indicating whether NA values should be stripped before the computation proceeds.}
   \item{verbose}{a logical for printing output to R console.}
@@ -29,9 +29,11 @@ James Second Order Test
 A list with class "jt" containing the following components:
 \item{statistic}{the James second order test statistic.}
 \item{criticalValue}{the critical value of the James second order test statistic.}
+\item{alpha}{the level of significance to assess the statistical difference.} 
 \item{method}{the character string "James Second Order Test".}
-\item{y}{a numeric vector of data values in which NA values (if exist) are removed.}
-\item{group}{a vector or factor object giving the group for the corresponding elements of y.} 
+\item{data}{a data frame containing the variables in which NA values (if exist) are removed.}
+\item{formula}{a formula of the form \code{lhs ~ rhs} where \code{lhs} gives the sample values and \code{rhs} the corresponding groups.}
+
 
 }
 
@@ -50,7 +52,7 @@ Anil Dolgun
 
 \examples{
 
-james.test(iris$Sepal.Width, iris$Species, alpha = 0.05)
+james.test(Sepal.Length ~ Species, data = iris, alpha = 0.05)
 
 }
 
