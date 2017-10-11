@@ -44,13 +44,13 @@ store = data.frame(matrix(NA, nrow = comb2, ncol = 5))
     store$X2 = comb[,2]
     store$X3 = statistics 
     store$X4 = cvs 
-    store$X5 = ifelse(store$X3 < store$X4 , "NO", "YES")
-    colnames(store) = c("Level (a)", "Level (b)", "statistic","criticalValue", "Difference")
+    store$X5 = ifelse(store$X3 < store$X4 , "Not reject", "Reject")
+    colnames(store) = c("Level (a)", "Level (b)", "statistic","criticalValue", "  No difference")
 
 cat("\n", "",method.name, "\n", sep = " ")
-cat("-----------------------------------------------------------", "\n", sep = " ")
+cat("----------------------------------------------------------------", "\n", sep = " ")
 print(store)
-cat("-----------------------------------------------------------", "\n\n", sep = " ")
+cat("----------------------------------------------------------------", "\n\n", sep = " ")
 
 
 invisible(store)

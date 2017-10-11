@@ -4,9 +4,13 @@ homog.test <- function(formula, data, method = c("Levene", "Bartlett", "Fligner"
 
   dp=as.character(formula)
   DNAME <- paste(dp[[2L]], "and", dp[[3L]])
-  y=data[,dp[[2L]]]
-  group=data[,dp[[3L]]]
 
+if (any(colnames(data)==dp[[3L]])==FALSE) stop("The name of group variable does not match the variable names in the data. The group variable must be one factor.")
+if (any(colnames(data)==dp[[2L]])==FALSE) stop("The name of response variable does not match the variable names in the data.")
+y = data[, dp[[2L]]]
+group = data[, dp[[3L]]]
+if (!is.factor(group)) stop("The group variable must be a factor.") 
+if (!is.numeric(y)) stop("The response must be a numeric variable.") 
 
 method = match.arg(method)
 if (na.rm) {

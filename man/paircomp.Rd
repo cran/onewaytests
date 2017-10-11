@@ -40,6 +40,8 @@ Osman Dag}
 
 \examples{
 
+library(onewaytests)
+
 out <- aov.test(Sepal.Length ~ Species, data = iris)
 paircomp(out)
 paircomp(out, adjust.method = "hochberg")

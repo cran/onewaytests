@@ -52,6 +52,8 @@ Anil Dolgun
 
 \examples{
 
+library(onewaytests)
+
 james.test(Sepal.Length ~ Species, data = iris, alpha = 0.05)
 
 }

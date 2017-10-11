@@ -20,7 +20,7 @@ Box-and-Whisker Plots and Error Bars
   \item{xlab}{a label for the x axis, defaults to a description of x.} 
   \item{ylab}{a label for the y axis, defaults to a description of y.} 
   \item{title}{a main title for the plot.} 
-  \item{width}{a numeric giving the width of the boxes for box-and-whisker plots (defaults to 0.4) and the width of the little lines at the tops and bottoms of the error bars (defaults to 0.15).} 
+  \item{width}{a numeric giving the width of the boxes for box-and-whisker plots (defaults to 0.3) and the width of the little lines at the tops and bottoms of the error bars (defaults to 0.15).} 
   \item{option}{a character string to select one of the options to draw error bars with standard error or standard deviation. "se": standard error, "sd": standard deviation. Defaults to "se".} 
   \item{na.rm}{a logical indicating whether NA values should be stripped before the computation proceeds.}
 
@@ -45,6 +45,8 @@ Osman Dag
 
 
 \examples{
+
+library(onewaytests)
 
 gplot(Sepal.Length ~ Species, data = iris, type = "boxplot")
 gplot(Sepal.Length ~ Species, data = iris, type = "boxplot", violin = FALSE)

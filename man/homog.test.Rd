@@ -49,6 +49,8 @@ Osman Dag
 
 \examples{
 
+library(onewaytests)
+
 homog.test(Sepal.Length ~ Species, data = iris)
 homog.test(Sepal.Length ~ Species, data = iris, method = "Bartlett")
 

@@ -54,6 +54,8 @@ Osman Dag}
 
 \examples{
 
+library(onewaytests)
+
 aov.test(Sepal.Length ~ Species, data = iris)
 
 }

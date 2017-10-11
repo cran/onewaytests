@@ -3,8 +3,13 @@ nor.test <- function(formula, data, method = c("SW", "SF", "LT", "AD", "CVM", "P
 
   dp=as.character(formula)
   DNAME <- paste(dp[[2L]], "and", dp[[3L]])
-  y=data[,dp[[2L]]]
-  group=data[,dp[[3L]]]
+
+if (any(colnames(data)==dp[[3L]])==FALSE) stop("The name of group variable does not match the variable names in the data. The group variable must be one factor.")
+if (any(colnames(data)==dp[[2L]])==FALSE) stop("The name of response variable does not match the variable names in the data.")
+y = data[, dp[[2L]]]
+group = data[, dp[[3L]]]
+if (!is.factor(group)) stop("The group variable must be a factor.") 
+if (!is.numeric(y)) stop("The response must be a numeric variable.") 
 
   dname1<-dp[[2L]]
   dname2<-dp[[3L]]
@@ -80,11 +85,12 @@ method.name = "Pearson Chi-square Normality Test"
 }
 
    store = data.frame(matrix(NA, nrow = k, ncol = 4))
-    colnames(store) = c("Level", "Statistic", "p.value", "Normality")
-    store$Statistic = stor1
-    store$p.value = stor2
-    store$Normality = ifelse(store$p.value > alpha, "YES", "NO")
-    store$Level = levels(group)
+    store$X1 = levels(group)
+    store$X2 = stor1
+    store$X3 = stor2
+    store$X4 = ifelse(store$X3 > alpha, "Not reject", "Reject")
+    colnames(store) = c("Level", "Statistic", "p.value", "  Normality")
+
 
  if (verbose) {
         cat("\n", "",method.name, "\n", sep = " ")

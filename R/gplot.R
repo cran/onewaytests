@@ -5,8 +5,12 @@ gplot <- function (formula, data, type = c("boxplot", "errorbar"), violin = TRUE
 dname1<-dp[[2L]]
 dname2<-dp[[3L]]
 
-  y=data[,dp[[2L]]]
-  group=data[,dp[[3L]]]
+if (any(colnames(data)==dp[[3L]])==FALSE) stop("The name of group variable does not match the variable names in the data. The group variable must be one factor.")
+if (any(colnames(data)==dp[[2L]])==FALSE) stop("The name of response variable does not match the variable names in the data.")
+y = data[, dp[[2L]]]
+group = data[, dp[[3L]]]
+if (!is.factor(group)) stop("The group variable must be a factor.") 
+if (!is.numeric(y)) stop("The response must be a numeric variable.") 
 
 if (na.rm) {
         completeObs <- complete.cases(y, group)
@@ -20,7 +24,7 @@ if (type == "boxplot"){
 
 data<-as.data.frame(cbind(y,group))
 data$group <- as.factor(group)
-if (is.null(width)) width <- 0.4 else width <- width
+if (is.null(width)) width <- 0.3 else width <- width
 
 out <- ggplot(data, aes(group, y))
 if (violin==TRUE) out <- out + geom_violin() 

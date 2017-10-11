@@ -49,6 +49,8 @@ Osman Dag
 
 \examples{
 
+library(onewaytests)
+
 nor.test(Sepal.Length ~ Species, data = iris, method = "SW", plot = "qqplot-histogram")
 nor.test(Sepal.Length ~ Species, data = iris, method = "SF", plot = "qqplot", mfrow = c(1,3))
 

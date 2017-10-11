@@ -52,6 +52,8 @@ Anil Dolgun
 
 \examples{
 
+library(onewaytests)
+
 kw.test(Sepal.Length ~ Species, data = iris)
 
 }

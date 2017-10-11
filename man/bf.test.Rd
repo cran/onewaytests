@@ -54,7 +54,11 @@ Osman Dag
 
 
 \examples{
+
+library(onewaytests)
+
 bf.test(Sepal.Length ~ Species, data = iris)
+
 }
 
 \keyword{functions}

@@ -52,13 +52,13 @@ store = data.frame(matrix(NA, nrow = comb2, ncol = 4))
     store$X1 = comb[,1]
     store$X2 = comb[,2]
     store$X3 = padj
-    store$X4 = ifelse(store$X3 <= alpha, "YES", "NO")
-    colnames(store) = c("Level (a)", "Level (b)", "p.value", "Difference")
+    store$X4 = ifelse(store$X3 <= alpha, "Reject", "Not reject")
+    colnames(store) = c("Level (a)", "Level (b)", "p.value", "  No difference")
 
 cat("\n", "",method.name, "\n", sep = " ")
-cat("-------------------------------------------------", "\n", sep = " ")
+cat("------------------------------------------------------", "\n", sep = " ")
 print(store)
-cat("-------------------------------------------------", "\n\n", sep = " ")
+cat("------------------------------------------------------", "\n\n", sep = " ")
 
 
 invisible(store)

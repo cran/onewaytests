@@ -36,6 +36,8 @@ Osman Dag
 
 \examples{
 
+library(onewaytests)
+
 describe(Sepal.Length ~ Species, data = iris)
 
 }
