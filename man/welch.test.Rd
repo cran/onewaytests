@@ -46,6 +46,8 @@ A list with class "owt" containing the following components:
 
 \references{
 
+Dag, O., Dolgun, A., Konar, N.M. (2018). onewaytests: An R Package for One-Way Tests in Independent Groups Designs. \emph{The R Journal}.
+
 Welch, B. L.(1951). On the Comparison of Several Mean Values: An Alternative Approach. \emph{Biometrika}, \bold{38}, 330-336.
 
 }

@@ -1,0 +1,12 @@
+citHeader("To cite onewaytests in publications use:")
+
+citEntry(entry="article",
+  title  = "onewaytests: An R Package for One-Way Tests in Independent Groups Designs.",
+  author = personList(as.person("O. Dag"), as.person("A. Dolgun"), as.person("N.M. Konar")),
+  journal = "The R Journal",
+  year = "2018",
+  textVersion = paste("Dag, O., Dolgun, A., Konar, N.M. (2018).",
+                      "onewaytests: An R Package for One-Way Tests in Independent Groups Designs.",
+                      "The R Journal."))
+
+
