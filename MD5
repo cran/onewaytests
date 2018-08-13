@@ -1,4 +1,4 @@
-e1a1b46d12cfd3440e5702c48ca65e6b *DESCRIPTION
+8427cd64711acd3b4c61a49fd1fcb92c *DESCRIPTION
 2239a67b15c74f0425bc8f8dd2d61072 *NAMESPACE
 ed79f0fa4603f4eddaa432d8f19ba251 *R/ag.test.R
 5484c2a3c38913d9b981b20ba369c984 *R/aov.test.R
@@ -12,7 +12,7 @@ c2559a9a64b610fc606de99e3160cae3 *R/nor.test.R
 049b2bcef2df1f24276420a4ab19aee0 *R/paircomp.R
 323a69b1e90def91d0691ac626a3c617 *R/paircomp.jt.R
 7a3d678be66de262d3eb6fd02bdb71de *R/welch.test.R
-b3b98238b12931ecb80d3b3d1b4ee3c4 *inst/citation
+a390f7f0265826066e1c6811ed128e0a *inst/citation
 70072cd5e6a12d4ea151e3fd1064ef12 *man/ag.test.Rd
 0cfe3761b7513b4582e398cdcf6264ba *man/aov.test.Rd
 e3de6d24a8570e433977f33b7bbeeb08 *man/bf.test.Rd
