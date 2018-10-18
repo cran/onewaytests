@@ -6,7 +6,7 @@
 One-Way Tests in Independent Groups Designs
 }
 \description{
-Performs one-way tests in independent groups designs, pairwise comparisons, graphical approaches, assesses variance homogeneity and normality of data in each group via tests and plots.
+Performs one-way tests in independent groups designs, pairwise comparisons, graphical approaches, assesses variance homogeneity and normality of data in each group via tests and plots (Dag et al., 2018, <https://journal.r-project.org/archive/2018/RJ-2018-022/RJ-2018-022.pdf>). 
 }
 \details{
 \tabular{ll}{

@@ -44,7 +44,7 @@ Brown, M. B., Forsythe. A. B. (1974a). The small sample behavior of some statist
 
 Brown, M. B., Forsythe. A. B. (1974b). Robust tests for the equality of variances. \emph{Journal of the American Statistical Association}, \bold{69}, 364-367.
 
-Dag, O., Dolgun, A., Konar, N.M. (2018). onewaytests: An R Package for One-Way Tests in Independent Groups Designs. \emph{The R Journal}.
+Dag, O., Dolgun, A., Konar, N.M. (2018). onewaytests: An R Package for One-Way Tests in Independent Groups Designs. \emph{The R Journal}, \bold{10:1}, 175-199.
 
 }
 
