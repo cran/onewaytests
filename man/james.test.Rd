@@ -13,7 +13,7 @@ James Second Order Test
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{formula}{a formula of the form \code{lhs ~ rhs} where \code{lhs} gives the sample values and \code{rhs} the corresponding groups.}
-  \item{data}{a data frame containing the variables in the formula \code{formula}} 
+  \item{data}{a tibble or data frame containing the variables in the formula \code{formula}} 
   \item{alpha}{a significance level. Defaults alpha = 0.05.}
    \item{na.rm}{a logical value indicating whether NA values should be stripped before the computation proceeds.}
   \item{verbose}{a logical for printing output to R console.}
@@ -57,6 +57,9 @@ Anil Dolgun
 library(onewaytests)
 
 james.test(Sepal.Length ~ Species, data = iris, alpha = 0.05)
+
+out <- james.test(Sepal.Length ~ Species, data = iris, alpha = 0.05)
+paircomp(out)
 
 }
 

@@ -12,9 +12,10 @@ data<-x$data
 
 dp=as.character(x$formula)
 
-  y=data[,dp[[2L]]]
-  group=as.factor(data[,dp[[3L]]])
+y=data[[dp[[2L]]]]
+group=as.factor(data[[dp[[3L]]]])
 
+  
 alpha <- x$alpha
 id <- levels(group)
 comb <- t(combn((id), 2))

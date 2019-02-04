@@ -14,7 +14,7 @@ Box-and-Whisker Plots and Error Bars
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{formula}{a formula of the form \code{lhs ~ rhs} where \code{lhs} gives the sample values and \code{rhs} the corresponding groups.}
-  \item{data}{a data frame containing the variables in the formula \code{formula}} 
+  \item{data}{a tibble or data frame containing the variables in the formula \code{formula}} 
   \item{type}{a character string to select one of the plots. "boxplot": box-and-whisker plot, "errorbar": error bar.} 
   \item{violin}{a logical adding violin plot on box-and-whisker plot.}
   \item{xlab}{a label for the x axis, defaults to a description of x.} 

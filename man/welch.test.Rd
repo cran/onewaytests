@@ -13,7 +13,7 @@ Welch's Heteroscedastic F Test and Welch's Heteroscedastic F Test with Trimmed M
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{formula}{a formula of the form \code{lhs ~ rhs} where \code{lhs} gives the sample values and \code{rhs} the corresponding groups.}
-  \item{data}{a data frame containing the variables in the formula \code{formula}} 
+  \item{data}{a tibble or data frame containing the variables in the formula \code{formula}} 
   \item{rate}{the rate of observations trimmed and winsorized from each tail of the distribution. If rate = 0, it performs Welch's heteroscedastic F test. Otherwise, Welch's heteroscedastic F test with trimmed means and Winsorized variances is performed. Default is set to rate = 0.} 
   \item{alpha}{the level of significance to assess the statistical difference. Default is
 set to alpha = 0.05.} 
@@ -64,6 +64,10 @@ library(onewaytests)
 
 welch.test(Sepal.Length ~ Species, data = iris)
 welch.test(Sepal.Length ~ Species, data = iris, rate = 0.1)
+
+
+out <- welch.test(Sepal.Length ~ Species, data = iris)
+paircomp(out)
 
 }
 

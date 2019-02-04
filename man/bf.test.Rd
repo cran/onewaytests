@@ -13,7 +13,7 @@ Brown-Forsythe Test
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{formula}{a formula of the form \code{lhs ~ rhs} where \code{lhs} gives the sample values and \code{rhs} the corresponding groups.}
-  \item{data}{a data frame containing the variables in the formula \code{formula}} 
+  \item{data}{a tibble or data frame containing the variables in the formula \code{formula}} 
   \item{alpha}{the level of significance to assess the statistical difference. Default is
 set to alpha = 0.05.} 
   \item{na.rm}{a logical value indicating whether NA values should be stripped before the computation proceeds.}
@@ -60,6 +60,10 @@ Osman Dag
 library(onewaytests)
 
 bf.test(Sepal.Length ~ Species, data = iris)
+
+out <- bf.test(Sepal.Length ~ Species, data = iris)
+paircomp(out)
+
 
 }
 

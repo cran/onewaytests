@@ -13,7 +13,7 @@ Descriptive Statistics
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{formula}{a formula of the form \code{lhs ~ rhs} where \code{lhs} gives the sample values and \code{rhs} the corresponding groups.}
-  \item{data}{a data frame containing the variables in the formula \code{formula}} 
+  \item{data}{a tibble or data frame containing the variables in the formula \code{formula}} 
 }
 
 %\details{
