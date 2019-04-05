@@ -1,4 +1,4 @@
-export(bf.test, ag.test, james.test, welch.test, kw.test, aov.test, describe, homog.test, gplot, nor.test, paircomp)
+export(bf.test, ag.test, james.test, welch.test, kw.test, aov.test, ss.test, describe, homog.test, gplot, nor.test, paircomp)
 S3method(paircomp,default)
 S3method(paircomp,owt)
 S3method(paircomp,jt)

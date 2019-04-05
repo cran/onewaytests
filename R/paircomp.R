@@ -28,6 +28,7 @@ if (x$method == "One-Way Analysis of Variance") pval <- c(pval, aov.test(x$formu
 if (x$method == "Alexander-Govern Test") pval <- c(pval, ag.test(x$formula,data_sub,verbose=F)$p.value)
 if (x$method == "Brown-Forsythe Test") pval <- c(pval, bf.test(x$formula,data_sub,verbose=F)$p.value)
 if (x$method == "Kruskal-Wallis Test") pval <- c(pval, kw.test(x$formula,data_sub,verbose=F)$p.value)
+if (x$method == "Scott-Smith Test") pval <- c(pval, ss.test(x$formula,data_sub,verbose=F)$p.value)
 if ((x$method == "Welch's Heteroscedastic F Test")|(x$method == "Welch's Heteroscedastic F Test with Trimmed Means and Winsorized Variances")) pval <- c(pval, welch.test(x$formula,data_sub, rate=x$rate,verbose=F)$p.value)
 
 

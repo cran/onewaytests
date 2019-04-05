@@ -38,7 +38,7 @@ Osman Dag
 }
 
 \seealso{
-\code{\link[ggplot2]{geom_boxplot}} \code{\link[ggplot2]{geom_errorbar}} \code{\link[ggplot2]{geom_violin}}  
+\code{\link[ggplot2]{geom_boxplot}} \code{\link[ggplot2]{geom_violin}}  
 
  
 }
