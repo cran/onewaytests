@@ -25,7 +25,7 @@ if (na.rm) {
 if (method == "Levene"){
 out=leveneTest(y, group, center="mean")
 if (verbose) {
-            cat("\n", " Levene's Homogeneity Test", "\n", 
+            cat("\n", " Levene's Homogeneity Test", paste("(alpha = ",alpha,")",sep = ""), "\n", 
                 sep = " ")
             cat("-----------------------------------------------", 
                 "\n", sep = " ")
@@ -56,7 +56,7 @@ result
 if (method == "Bartlett"){
 out=bartlett.test(y, group)
 if (verbose) {
-            cat("\n", " Bartlett's Homogeneity Test", "\n", 
+            cat("\n", " Bartlett's Homogeneity Test", paste("(alpha = ",alpha,")",sep = ""), "\n", 
                 sep = " ")
             cat("-----------------------------------------------", 
                 "\n", sep = " ")
@@ -86,9 +86,9 @@ result$method <- "Bartlett's Homogeneity Test"
 if (method == "Fligner"){
 out=fligner.test(y, group)
 if (verbose) {
-            cat("\n", " Fligner-Killeen Homogeneity Test", "\n", 
+            cat("\n", " Fligner-Killeen Homogeneity Test", paste("(alpha = ",alpha,")",sep = ""), "\n", 
                 sep = " ")
-            cat("-----------------------------------------------", 
+            cat("---------------------------------------------------", 
                 "\n", sep = " ")
             cat("  data :", DNAME, "\n\n", sep = " ")
             cat("  statistic  :", out$statistic, "\n", sep = " ")
@@ -100,7 +100,7 @@ if (verbose) {
             else {
                 "  Result     : Variances are not homogeneous."
             }, "\n")
-            cat("-----------------------------------------------", 
+            cat("---------------------------------------------------", 
                 "\n\n", sep = " ")
         }
 

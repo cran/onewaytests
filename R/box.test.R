@@ -1,9 +1,9 @@
-aov.test <- function(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE) {
+box.test <- function(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE) {
 
   dp=as.character(formula)
   DNAME <- paste(dp[[2L]], "and", dp[[3L]])
 
-  METHOD <- "One-Way Analysis of Variance"
+  METHOD <- "Box F Test"
 
 
  if (na.rm){
@@ -23,31 +23,24 @@ if (!is.numeric(y)) stop("The response must be a numeric variable.")
 
 n <- length(y)
 x.levels <- levels(factor(group))
-y.sums <- y.n <- NULL
-
-sst=sum(y^2)-(sum(y)^2)/n
+k <- length(x.levels)
+y.means <- y.n <- y.vars <- NULL
 
 
 for (i in x.levels) {
-
-y.sums[i] <- sum(y[group==i])
-  
+y.means[i] <- mean(y[group==i])
 y.n[i] <- length(y[group==i])
-
+y.vars[i] <- var(y[group==i])
 }
 
 
-ssb<- sum(y.sums^2/y.n)-sum(y)^2/n
+f <- y.n/length(y)
 
-ssw=sst-ssb 
+df1 <- (sum((1 - f) * y.vars))^2/((sum(y.vars * f))^2 + sum((y.vars^2) * (1 - 2 * f)))
 
+df2 <- ((sum((1 - f) * y.vars))^2)/((sum(y.vars^2 * (1 - f)^2))/sum(y.n - 1))
 
-df1=length(x.levels)-1
-df2=n-length(x.levels)
-
-
-Ftest=ssb/df1*df2/ssw
-
+Ftest <- (sum(y.n * ((y.means - mean(y))^2)))/(sum((1 - (y.n/length(y))) * y.vars))
 
 
 p.value=pf(Ftest,df1,df2,lower.tail = F)

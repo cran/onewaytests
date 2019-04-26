@@ -96,7 +96,7 @@ method.name = "Pearson Chi-square Normality Test"
 
 
  if (verbose) {
-        cat("\n", "",method.name, "\n", sep = " ")
+        cat("\n", "",method.name, paste("(alpha = ",alpha,")",sep = ""), "\n", sep = " ")
         cat("--------------------------------------------------", 
             "\n", sep = " ")
         cat("  data :", dname1, "and", dname2, "\n\n", sep = " ")

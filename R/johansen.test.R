@@ -1,9 +1,9 @@
-aov.test <- function(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE) {
+johansen.test <- function(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE) {
 
   dp=as.character(formula)
   DNAME <- paste(dp[[2L]], "and", dp[[3L]])
 
-  METHOD <- "One-Way Analysis of Variance"
+  METHOD <- "Johansen F Test"
 
 
  if (na.rm){
@@ -23,32 +23,29 @@ if (!is.numeric(y)) stop("The response must be a numeric variable.")
 
 n <- length(y)
 x.levels <- levels(factor(group))
-y.sums <- y.n <- NULL
-
-sst=sum(y^2)-(sum(y)^2)/n
+k <- length(x.levels)
+y.means <- y.n <- y.vars <- NULL
 
 
 for (i in x.levels) {
-
-y.sums[i] <- sum(y[group==i])
-  
+y.means[i] <- mean(y[group==i])
 y.n[i] <- length(y[group==i])
-
+y.vars[i] <- var(y[group==i])
 }
 
 
-ssb<- sum(y.sums^2/y.n)-sum(y)^2/n
-
-ssw=sst-ssb 
-
-
-df1=length(x.levels)-1
-df2=n-length(x.levels)
+w <- y.n/y.vars
+h <- w/sum(w)
 
 
-Ftest=ssb/df1*df2/ssw
+A <- sum((1 - w/sum(w))^2/(y.n - 1))
+c <- (k - 1) + 2 * A - (6 * A/(k + 1)) 
+T <- sum(w * (y.means - sum(h * y.means))^2)
 
+df1 <- k-1
+df2 <- (k - 1) * (k + 1)/(3 * A)
 
+Ftest=T/c
 
 p.value=pf(Ftest,df1,df2,lower.tail = F)
 

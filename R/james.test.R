@@ -90,9 +90,9 @@ result<-( if (Jtest >= CV) "Reject H_0" else "Fail to reject H_0")
 
 
 if (verbose) {
-            cat("\n", "",METHOD, "\n", 
+            cat("\n", "",METHOD, paste("(alpha = ",alpha,")",sep = ""),"\n", 
                 sep = " ")
-            cat("---------------------------------------------------------------", 
+            cat("----------------------------------------------------------------", 
                 "\n", sep = " ")
             cat("  data :", DNAME, "\n\n", sep = " ")
             cat("  statistic     :", Jtest, "\n", sep = " ")
@@ -103,7 +103,7 @@ if (verbose) {
             else {
                 "  Result        : Difference is statistically significant."
             }, "\n")
-            cat("---------------------------------------------------------------", 
+            cat("----------------------------------------------------------------", 
                 "\n\n", sep = " ")
         }
 

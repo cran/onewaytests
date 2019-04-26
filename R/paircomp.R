@@ -29,6 +29,8 @@ if (x$method == "Alexander-Govern Test") pval <- c(pval, ag.test(x$formula,data_
 if (x$method == "Brown-Forsythe Test") pval <- c(pval, bf.test(x$formula,data_sub,verbose=F)$p.value)
 if (x$method == "Kruskal-Wallis Test") pval <- c(pval, kw.test(x$formula,data_sub,verbose=F)$p.value)
 if (x$method == "Scott-Smith Test") pval <- c(pval, ss.test(x$formula,data_sub,verbose=F)$p.value)
+if (x$method == "Johansen F Test") pval <- c(pval, johansen.test(x$formula,data_sub,verbose=F)$p.value)
+if (x$method == "Box F Test") pval <- c(pval, box.test(x$formula,data_sub,verbose=F)$p.value)
 if ((x$method == "Welch's Heteroscedastic F Test")|(x$method == "Welch's Heteroscedastic F Test with Trimmed Means and Winsorized Variances")) pval <- c(pval, welch.test(x$formula,data_sub, rate=x$rate,verbose=F)$p.value)
 
 
@@ -58,9 +60,9 @@ store = data.frame(matrix(NA, nrow = comb2, ncol = 4))
     colnames(store) = c("Level (a)", "Level (b)", "p.value", "  No difference")
 
 cat("\n", "",method.name, "\n", sep = " ")
-cat("------------------------------------------------------", "\n", sep = " ")
+cat("-----------------------------------------------------", "\n", sep = " ")
 print(store)
-cat("------------------------------------------------------", "\n\n", sep = " ")
+cat("-----------------------------------------------------", "\n\n", sep = " ")
 
 
 invisible(store)

@@ -41,9 +41,9 @@ if (!is.numeric(y)) stop("The response must be a numeric variable.")
 
 
 if (verbose) {
-            cat("\n", "",METHOD, "\n", 
+            cat("\n", "",METHOD, paste("(alpha = ",alpha,")",sep = ""),"\n", 
                 sep = " ")
-            cat("---------------------------------------------------------", 
+            cat("-------------------------------------------------------------", 
                 "\n", sep = " ")
             cat("  data :", DNAME, "\n\n", sep = " ")
             cat("  statistic  :", approx, "\n", sep = " ")
@@ -55,7 +55,7 @@ if (verbose) {
             else {
                 "  Result     : Difference is statistically significant."
             }, "\n")
-            cat("---------------------------------------------------------", 
+            cat("-------------------------------------------------------------", 
                 "\n\n", sep = " ")
         }
 

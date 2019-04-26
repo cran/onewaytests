@@ -1,14 +1,14 @@
-\name{aov.test}
-\alias{aov.test}
+\name{box.test}
+\alias{box.test}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-One-Way Analysis of Variance 
+Box F Test
 }
 \description{
-\code{aov.test} performs one-way analysis of variance (ANOVA).
+\code{box.test} performs Johansen F test.
 }
 
-\usage{aov.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
+\usage{box.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -29,11 +29,11 @@ set to alpha = 0.05.}
 \value{
 A list with class "owt" containing the following components:
 
-\item{statistic}{the analysis of variance test statistic.}
+\item{statistic}{the Box F test statistic.}
 \item{parameter}{the parameter(s) of the approximate F distribution of the test statistic.}
 \item{p.value}{the p-value of the test.}
 \item{alpha}{the level of significance to assess the statistical difference.} 
-\item{method}{the character string "One-Way Analysis of Variance".}
+\item{method}{the character string "Box F Test".}
 \item{data}{a data frame containing the variables in which NA values (if exist) are removed.}
 \item{formula}{a formula of the form \code{lhs ~ rhs} where \code{lhs} gives the sample values and \code{rhs} the corresponding groups.}
 
@@ -41,16 +41,13 @@ A list with class "owt" containing the following components:
 }
 
 \references{
-
-Dag, O., Dolgun, A., Konar, N.M. (2018). onewaytests: An R Package for One-Way Tests in Independent Groups Designs. \emph{The R Journal}, \bold{10:1}, 175-199.
-
-Sheskin, D. J. (2004). \emph{Handbook of Parametric and Nonparametric Statistical Procedures}. 3rd Edition. Chapman and Hall CRC. Florida: Boca Raton. 
-
+Box, G.E.P. (1954). Some Theorems on Quadratic Forms Applied in the Study of Analysis of Variance Problems, \emph{Annals of Mathematical Statistics}, \bold{25}, 290-302.
 }
 
 
 \author{
-Osman Dag}
+Osman Dag
+}
 
 
 
@@ -58,9 +55,9 @@ Osman Dag}
 
 library(onewaytests)
 
-aov.test(Sepal.Length ~ Species, data = iris)
+johansen.test(Sepal.Length ~ Species, data = iris)
 
-out <- aov.test(Sepal.Length ~ Species, data = iris)
+out <- box.test(Sepal.Length ~ Species, data = iris)
 paircomp(out)
 
 

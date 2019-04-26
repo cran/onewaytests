@@ -1,14 +1,14 @@
-\name{aov.test}
-\alias{aov.test}
+\name{mw.test}
+\alias{mw.test}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-One-Way Analysis of Variance 
+Mann-Whitney U Test
 }
 \description{
-\code{aov.test} performs one-way analysis of variance (ANOVA).
+\code{mw.test} performs Mann-Whitney U test for two samples.
 }
 
-\usage{aov.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
+\usage{mw.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -21,47 +21,46 @@ set to alpha = 0.05.}
 
 }
 
-%\details{
-%%  ~~ If necessary, more details than the description above ~~
-%}
+\details{
+Approximation to normal distribution is used to obtain the p-value.
+}
 
 
 \value{
-A list with class "owt" containing the following components:
-
-\item{statistic}{the analysis of variance test statistic.}
-\item{parameter}{the parameter(s) of the approximate F distribution of the test statistic.}
+A list with containing the following components:
+\item{statistic}{the Z statistic.}
 \item{p.value}{the p-value of the test.}
 \item{alpha}{the level of significance to assess the statistical difference.} 
-\item{method}{the character string "One-Way Analysis of Variance".}
 \item{data}{a data frame containing the variables in which NA values (if exist) are removed.}
 \item{formula}{a formula of the form \code{lhs ~ rhs} where \code{lhs} gives the sample values and \code{rhs} the corresponding groups.}
-
-
-}
-
-\references{
-
-Dag, O., Dolgun, A., Konar, N.M. (2018). onewaytests: An R Package for One-Way Tests in Independent Groups Designs. \emph{The R Journal}, \bold{10:1}, 175-199.
-
-Sheskin, D. J. (2004). \emph{Handbook of Parametric and Nonparametric Statistical Procedures}. 3rd Edition. Chapman and Hall CRC. Florida: Boca Raton. 
 
 }
 
 
 \author{
-Osman Dag}
+Osman Dag
+}
 
+
+\seealso{
+\code{\link[stats]{wilcox.test}} \code{\link[onewaytests]{st.test}} \code{\link[onewaytests]{wt.test}} 
+ 
+}
 
 
 \examples{
 
+
+library(AID)
+data(AADT)
+
+AADT$control <- factor(AADT$control, levels = c(1,2), labels = c("control","no control")) 
+
+
 library(onewaytests)
+describe(aadt ~ control, data = AADT)
 
-aov.test(Sepal.Length ~ Species, data = iris)
-
-out <- aov.test(Sepal.Length ~ Species, data = iris)
-paircomp(out)
+mw.test(aadt ~ control, data = AADT)
 
 
 }
