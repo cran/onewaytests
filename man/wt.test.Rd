@@ -27,7 +27,7 @@ set to alpha = 0.05.}
 
 
 \value{
-A list with containing the following components:
+A list with class "owt" containing the following components:
 \item{statistic}{the Welch's t-test statistic.}
 \item{parameter}{the parameter(s) of the approximate t distribution of the test statistic.}
 \item{p.value}{the p-value of the test.}
@@ -53,9 +53,6 @@ Osman Dag
 
 library(AID)
 data(AADT)
-
-AADT$control <- factor(AADT$control, levels = c(1,2), labels = c("control","no control")) 
-
 
 library(onewaytests)
 describe(aadt ~ control, data = AADT)

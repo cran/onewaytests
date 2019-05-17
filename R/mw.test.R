@@ -102,6 +102,8 @@ mw.test <- function(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE) {
   result$method <- METHOD 
   result$data <- data
   result$formula <- formula
+
+  attr(result, "class") <- "owt"
   invisible(result)
   
   

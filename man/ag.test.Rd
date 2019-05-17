@@ -57,6 +57,8 @@ Osman Dag
 
 \examples{
 
+######
+
 library(onewaytests)
 
 ag.test(Sepal.Length ~ Species, data = iris)
@@ -64,14 +66,18 @@ ag.test(Sepal.Length ~ Species, data = iris)
 out <- ag.test(Sepal.Length ~ Species, data = iris)
 paircomp(out)
 
+######
 
-library("tibble")
+library(onewaytests)
+library(tibble)
 
-iris <- as_data_frame(iris)
+iris <- as_tibble(iris)
 ag.test(Sepal.Length ~ Species, data = iris)
 
 out <- ag.test(Sepal.Length ~ Species, data = iris)
 paircomp(out)
+
+######
 }
 
 \keyword{functions}

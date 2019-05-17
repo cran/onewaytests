@@ -5,7 +5,7 @@
 Box F Test
 }
 \description{
-\code{box.test} performs Johansen F test.
+\code{box.test} performs Box F test.
 }
 
 \usage{box.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}

@@ -27,7 +27,7 @@ Approximation to normal distribution is used to obtain the p-value.
 
 
 \value{
-A list with containing the following components:
+A list with class "owt" containing the following components:
 \item{statistic}{the Z statistic.}
 \item{p.value}{the p-value of the test.}
 \item{alpha}{the level of significance to assess the statistical difference.} 
@@ -53,9 +53,6 @@ Osman Dag
 
 library(AID)
 data(AADT)
-
-AADT$control <- factor(AADT$control, levels = c(1,2), labels = c("control","no control")) 
-
 
 library(onewaytests)
 describe(aadt ~ control, data = AADT)

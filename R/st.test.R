@@ -81,6 +81,8 @@ result$alpha <- alpha
 result$method <- METHOD 
 result$data <- data
 result$formula <- formula
+
+attr(result, "class") <- "owt"
 invisible(result)
 
 
