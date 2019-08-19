@@ -35,6 +35,7 @@ statistics <- NULL
 cvs <- NULL
 for (i in 1:comb2){
     data_sub <- data[(group == comb[i,1])|(group == comb[i,2]),]
+    data_sub[[dp[[3L]]]] <- factor(data_sub[[dp[[3L]]]])
 if (x$method == "James Second Order Test") {
 statistics <- c(statistics , james.test(x$formula,data_sub,alpha=alpha_adj,verbose=F)$statistic)
 cvs <- c(cvs , james.test(x$formula,data_sub, alpha=alpha_adj,verbose=F)$criticalValue)

@@ -55,7 +55,7 @@ Osman Dag
 
 library(onewaytests)
 
-johansen.test(Sepal.Length ~ Species, data = iris)
+box.test(Sepal.Length ~ Species, data = iris)
 
 out <- box.test(Sepal.Length ~ Species, data = iris)
 paircomp(out)

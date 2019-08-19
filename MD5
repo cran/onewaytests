@@ -1,10 +1,11 @@
-50e3547866f9809544bbb409cbb4add1 *DESCRIPTION
-5c29382ea161557a4f6de4c6124ab032 *NAMESPACE
+0d5a8388a62d24db7986851b85e13b9c *DESCRIPTION
+2f9febef1d23ceebe0bef7c3fce970fa *NAMESPACE
 62b983cab318a07aeef81d96aba87fd5 *R/ag.test.R
 a15c32138ca4197dcb8e098d62356f7b *R/aov.test.R
 0de2ab82d68af02f6c23a90fae1689ca *R/bf.test.R
 50df66f340ca6052dee2d4e1da882cfa *R/box.test.R
 4ce187cfad54302fc22afff2f5cde731 *R/describe.R
+3b8fd8d41f8e76c62e4f212c6a080754 *R/gp.test.R
 2c9750529b367a3616141fde806cb149 *R/gplot.R
 99d6385ca246d354abf570a360bbd341 *R/homog.test.R
 0d2e3189a17fa9addd742161e9465315 *R/james.test.R
@@ -12,8 +13,8 @@ d8fdf9d61b67b87138823aafe0fdeca1 *R/johansen.test.R
 19be39ee3116b77a38f865343f029c13 *R/kw.test.R
 ac025d44b40353ac34293bcd86ebe507 *R/mw.test.R
 2a509d86576dce60c0de5aa28a79ece9 *R/nor.test.R
-ef457c975d9ed19ceede801a3168079e *R/paircomp.R
-cb8cf2592e886df3e5632b994368d40a *R/paircomp.jt.R
+3ab30115496fa791c016e1189fc634e2 *R/paircomp.R
+1ec3f0b8160dc72d8f3a109bb65d3221 *R/paircomp.jt.R
 f4ff8c7c4519634708c99f0838e1062b *R/ss.test.R
 c9759623631972d6a8b923abec304253 *R/st.test.R
 681dd35514bca8682768659b65b40871 *R/welch.test.R
@@ -22,8 +23,9 @@ a390f7f0265826066e1c6811ed128e0a *inst/citation
 b2db44a4bafd76f5976be27b90f9832c *man/ag.test.Rd
 98835e25fd0d2baf0a87ce9f8bb65491 *man/aov.test.Rd
 b63a46521ca45365f8afe612196b2a04 *man/bf.test.Rd
-c43e6bc4695f376c87b5fe5dca9ac173 *man/box.test.Rd
+de08eaa8ec7ff5392d6fcd162db7f9f2 *man/box.test.Rd
 3df11daf57cae4dfb6b8d511382d6cd3 *man/describe.Rd
+f89a1746f6b738c4147746e77577eed5 *man/gp.test.Rd
 6543e3574cdf577f71d7073a7076c403 *man/gplot.Rd
 0d760a65ee2039a8fafd262fd43428aa *man/homog.test.Rd
 daa6593d856dd5cdc45e7ebf2a77d8bb *man/james.test.Rd
@@ -31,7 +33,7 @@ a7d4b44804c5ac4cba8aa55aa74fbd01 *man/johansen.test.Rd
 5206850625acb6310c909d14992d7ba3 *man/kw.test.Rd
 f9db6c89bc7c453f072984dd347ab310 *man/mw.test.Rd
 e9b793450c312dd71b2324e96487f121 *man/nor.test.Rd
-8fd677e0beb925e7de096594f9ebf53a *man/onewaytests.Rd
+8d89feee8bea2fba15a04223c7a52951 *man/onewaytests.Rd
 1b947919d5c3ab889c9df88700d722ba *man/paircomp.Rd
 7c742ca640364933d8e5a78366f9b3df *man/paircomp.jt.Rd
 a4fd8a675dd3a1977baf704f2ac30dd1 *man/ss.test.Rd

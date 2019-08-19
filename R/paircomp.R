@@ -26,12 +26,15 @@ comb2 <- dim(comb)[1]
 pval <- NULL
 for (i in 1:comb2){
     data_sub <- data[(group == comb[i,1])|(group == comb[i,2]),]
+    data_sub[[dp[[3L]]]] <- factor(data_sub[[dp[[3L]]]])
 if (x$method == "One-Way Analysis of Variance") pval <- c(pval, aov.test(x$formula,data_sub,verbose=F)$p.value)
 if (x$method == "Alexander-Govern Test") pval <- c(pval, ag.test(x$formula,data_sub,verbose=F)$p.value)
 if (x$method == "Brown-Forsythe Test") pval <- c(pval, bf.test(x$formula,data_sub,verbose=F)$p.value)
 if (x$method == "Kruskal-Wallis Test") pval <- c(pval, kw.test(x$formula,data_sub,verbose=F)$p.value)
 if (x$method == "Scott-Smith Test") pval <- c(pval, ss.test(x$formula,data_sub,verbose=F)$p.value)
 if (x$method == "Johansen F Test") pval <- c(pval, johansen.test(x$formula,data_sub,verbose=F)$p.value)
+if (x$method == "Generalized Test Equivalent to Fiducial Test (size assured)") pval <- c(pval, gp.test(x$formula,data_sub, method = "GT_Fiducial",verbose=F)$p.value)
+if (x$method == "Generalized Test Equivalent to Parametric Bootstrap Test (size close to intended)") pval <- c(pval, gp.test(x$formula,data_sub, method = "GT_Bootstrap",verbose=F)$p.value)
 if (x$method == "Box F Test") pval <- c(pval, box.test(x$formula,data_sub,verbose=F)$p.value)
 if ((x$method == "Welch's Heteroscedastic F Test")|(x$method == "Welch's Heteroscedastic F Test with Trimmed Means and Winsorized Variances")) pval <- c(pval, welch.test(x$formula,data_sub, rate=x$rate,verbose=F)$p.value)
 
