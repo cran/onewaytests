@@ -11,6 +11,8 @@ y=data[[dp[[2L]]]]
 group=as.factor(data[[dp[[3L]]]])
 
 
+if (is.character(group)) group <- as.factor(group)
+
 if (length(levels(group))==2) stop("The group variable must have more than two levels to make pairwise comparison.")
 
 

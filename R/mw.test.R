@@ -18,7 +18,8 @@ mw.test <- function(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE) {
   group = data[[dp[[3L]]]]
   
   
-  if (!is.factor(group)) stop("The group variable must be a factor.") 
+  if (!(is.factor(group)|is.character(group))) stop("The group variable must be a factor or a character.") 
+  if (is.character(group)) group <- as.factor(group)
   if (!is.numeric(y)) stop("The response must be a numeric variable.") 
   if (length(levels(factor(group)))!=2) stop("The group variable must have two levels.")
   

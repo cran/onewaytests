@@ -12,7 +12,8 @@ y = data[[dp[[2L]]]]
 group = data[[dp[[3L]]]]
 
 
-if (!is.factor(group)) stop("The group variable must be a factor.") 
+if (!(is.factor(group)|is.character(group))) stop("The group variable must be a factor or a character.") 
+if (is.character(group)) group <- as.factor(group)
 if (!is.numeric(y)) stop("The response must be a numeric variable.") 
 
 method = match.arg(method)
