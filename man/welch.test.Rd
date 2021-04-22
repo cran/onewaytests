@@ -65,7 +65,6 @@ library(onewaytests)
 welch.test(Sepal.Length ~ Species, data = iris)
 welch.test(Sepal.Length ~ Species, data = iris, rate = 0.1)
 
-
 out <- welch.test(Sepal.Length ~ Species, data = iris)
 paircomp(out)
 

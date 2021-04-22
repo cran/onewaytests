@@ -1,7 +1,9 @@
 gplot <- function (formula, data, type = c("boxplot", "errorbar"), violin = TRUE, xlab = NULL, ylab = NULL, title = NULL, width = NULL, option = c("se", "sd"), na.rm = TRUE){
 
-  dp=as.character(formula)
-  DNAME <- paste(dp[[2L]], "and", dp[[3L]])
+data <- model.frame(formula, data)
+dp <- as.character(formula)
+DNAME <- paste(dp[[2L]], "and", dp[[3L]])
+
 dname1<-dp[[2L]]
 dname2<-dp[[3L]]
 

@@ -1,9 +1,9 @@
 
 homog.test <- function(formula, data, method = c("Levene", "Bartlett", "Fligner"), alpha = 0.05, na.rm = TRUE, verbose = TRUE){
 
-
-  dp=as.character(formula)
-  DNAME <- paste(dp[[2L]], "and", dp[[3L]])
+data <- model.frame(formula, data)
+dp <- as.character(formula)
+DNAME <- paste(dp[[2L]], "and", dp[[3L]])
 
 if (any(colnames(data)==dp[[3L]])==FALSE) stop("The name of group variable does not match the variable names in the data. The group variable must be one factor.")
 if (any(colnames(data)==dp[[2L]])==FALSE) stop("The name of response variable does not match the variable names in the data.")

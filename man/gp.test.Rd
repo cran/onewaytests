@@ -9,8 +9,7 @@ Test for Equal Means in a One-Way Layout under Unequal Variances
 }
 
 \usage{gp.test(formula, data, method = c("GT_Bootstrap","GT_Fiducial"), alpha = 0.05, 
-  na.rm = TRUE, 
-  verbose = TRUE)}
+  na.rm = TRUE, verbose = TRUE)}
 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -83,7 +82,7 @@ Example1 <- data.frame(y, x)
 
 describe(y ~ x, data = Example1)
 
-\dontrun{
+\donttest{
 out <- gp.test(y ~ x, data = Example1, alpha = 0.10)
 paircomp(out)
 
@@ -102,7 +101,7 @@ Example2 <- data.frame(y, x)
 
 describe(y ~ x, data = Example2)
 
-\dontrun{
+\donttest{
 out <- gp.test(y ~ x, data = Example2, method = "GT_Fiducial", alpha = 0.10)
 paircomp(out)
 

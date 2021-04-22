@@ -1,7 +1,8 @@
 
 welch.test <- function(formula, data, rate = 0, alpha = 0.05, na.rm = TRUE, verbose = TRUE) {
 
-  dp=as.character(formula)
+  data <- model.frame(formula, data)
+  dp <- as.character(formula)
   DNAME <- paste(dp[[2L]], "and", dp[[3L]])
 
 if (rate==0){METHOD <- "Welch's Heteroscedastic F Test"

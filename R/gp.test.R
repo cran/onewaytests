@@ -1,6 +1,7 @@
 gp.test<-function(formula, data, method = c("GT_Bootstrap","GT_Fiducial"), alpha = 0.05, na.rm = TRUE, verbose = TRUE) {
      
-    dp=as.character(formula)
+    data <- model.frame(formula, data)
+    dp <- as.character(formula)
     DNAME <- paste(dp[[2L]], "and", dp[[3L]])
     
 

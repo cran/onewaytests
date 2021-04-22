@@ -1,7 +1,8 @@
 
 nor.test <- function(formula, data, method = c("SW", "SF", "LT", "AD", "CVM", "PT"), alpha = 0.05, plot = c("qqplot-histogram", "qqplot", "histogram"), mfrow = NULL, na.rm = TRUE, verbose = TRUE){ 
 
-  dp=as.character(formula)
+  data <- model.frame(formula, data)
+  dp <- as.character(formula)
   DNAME <- paste(dp[[2L]], "and", dp[[3L]])
 
 if (any(colnames(data)==dp[[3L]])==FALSE) stop("The name of group variable does not match the variable names in the data. The group variable must be one factor.")
