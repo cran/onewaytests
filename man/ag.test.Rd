@@ -22,9 +22,8 @@ set to alpha = 0.05.}
 
 }
 
-\note{
-An R implementation of Alexander-Govern test has been available since 2007 (written by Sven Hartenstein). The website link is \href{https://eval-serv2.metpsy.uni-jena.de/wiki-metheval-hp/index.php/R_FUN_Alexander-Govern}{here}.
-}
+%\note{
+%}
 
 
 \value{

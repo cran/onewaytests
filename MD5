@@ -1,14 +1,14 @@
-e1633df0313d4669220d4fda7a617900 *DESCRIPTION
+7cc0c901baf7c4c107fbcc4398759c36 *DESCRIPTION
 50eef53419914b6673d505367f11e856 *NAMESPACE
 f4c04af80c893424d01921cd34345000 *R/ag.test.R
 e69526b14ec72cf4e8f6de2e0dc0f343 *R/aov.test.R
 d8f16b549ce1a6654cc2a8ea9378b685 *R/bf.test.R
-44e5d722af6c47ca0f40f721904955f6 *R/box.test.R
+4fe9249d69c4ca6c7e5cb4eeffa366d4 *R/box.test.R
 0e6ca8633e7767701967107013acb500 *R/describe.R
 74b22b8e2e76a3487fd738155c8c6abd *R/gp.test.R
 6e7538bfe66db50236fe32fa217e7315 *R/gplot.R
 f3578d74faadc5241a6293cd38afb176 *R/homog.test.R
-ca0635812ff939fb4394d6c4922c6c73 *R/james.test.R
+6b7c3e439d5ef70b394a1450554e6ac7 *R/james.test.R
 dab542600c26c40246c0bd4115cd0f03 *R/johansen.test.R
 fa0fa78315a868d446b078df9af62b5e *R/kw.test.R
 b94f8a73efd34bd12e2ac333461ad8e6 *R/mw.test.R
@@ -20,7 +20,7 @@ ed1d0d23f30e76657f6690003cd2d70a *R/paircomp.R
 5b538e16060f5133589dc1da99e0c6db *R/welch.test.R
 459a705ec4b50086833ef7597e72ffa2 *R/wt.test.R
 a390f7f0265826066e1c6811ed128e0a *inst/citation
-b2db44a4bafd76f5976be27b90f9832c *man/ag.test.Rd
+e91a501be862565cb28737fc19b4fe83 *man/ag.test.Rd
 98835e25fd0d2baf0a87ce9f8bb65491 *man/aov.test.Rd
 b63a46521ca45365f8afe612196b2a04 *man/bf.test.Rd
 de08eaa8ec7ff5392d6fcd162db7f9f2 *man/box.test.Rd
