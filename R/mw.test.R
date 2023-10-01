@@ -29,15 +29,7 @@ mw.test <- function(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE) {
   
   DNAME <- paste(x.levels[1], "vs.", x.levels[2])
   
-  
-  y.means <- y.n <- y.var <- NULL
-  
-  
-  for (i in x.levels) {
-    
-    y.n[i] <- length(y[group==i])
-    
-  }
+  y.n <- tapply(y, group, length)
   
   
   data2 <- cbind(group,y)
@@ -63,7 +55,7 @@ mw.test <- function(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE) {
   U <- min(U1,U2)
   
   if(length(y) == length(unique(y))){
-  sigma_U <- sqrt(y.n1*y.n2*(y.n1+y.n2+1)/12)
+    sigma_U <- sqrt(y.n1*y.n2*(y.n1+y.n2+1)/12)
   }else{
     nties <- table(y)
     sigma_U <- sqrt(y.n1*y.n2/(n*(n-1))*((n^3-n)/12-sum(nties^3-nties)/12))
@@ -104,7 +96,7 @@ mw.test <- function(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE) {
   result$method <- METHOD 
   result$data <- data
   result$formula <- formula
-
+  
   attr(result, "class") <- "owt"
   invisible(result)
   

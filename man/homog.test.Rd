@@ -14,9 +14,9 @@ Variance Homogeneity Tests
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{formula}{a formula of the form \code{lhs ~ rhs} where \code{lhs} gives the sample values and \code{rhs} the corresponding groups.}
-  \item{data}{a tibble or data frame containing the variables in the formula \code{formula}} 
+  \item{data}{a tibble or data frame containing the variables in \code{formula}.} 
   \item{method}{a character string to select one of the variance homogeneity tests. "Levene": Levene's test, "Bartlett": Bartlett's test, "Fligner": Fligner-Killeen test.} 
-  \item{alpha}{the level of significance to assess variance homogenity. Default is set to alpha = 0.05.}
+  \item{alpha}{the level of significance to assess variance homogeneity. Default is set to alpha = 0.05.}
   \item{na.rm}{a logical value indicating whether NA values should be stripped before the computation proceeds.}
   \item{verbose}{a logical for printing output to R console.}
 
@@ -30,7 +30,7 @@ Variance Homogeneity Tests
 \value{
 A list containing the following components:
 \item{statistic}{the corresponding test statistic.}
-\item{parameter}{the parameter(s) of the approximate corresponding distribution of the test statistic. The corresponding distribution is F distribution for Levene's test, Chi-square disribution for Bartlett's test and Fligner-Killeen test.}
+\item{parameter}{the parameter(s) of the approximate corresponding distribution of the test statistic. The corresponding distribution is F distribution for Levene's test, Chi-square distribution for Bartlett's test and Fligner-Killeen test.}
 \item{p.value}{the p-value of the test.}
 
 }

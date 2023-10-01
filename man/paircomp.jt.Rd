@@ -9,12 +9,13 @@ Pairwise Comparisons for James Second Order Test
 }
 
 \usage{
-\method{paircomp}{jt}(x, adjust.method = c("bonferroni", "none"), ...)}
+\method{paircomp}{jt}(x, adjust.method = c("bonferroni", "none"), verbose = TRUE, ...)}
 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{a \code{jt} object.}
   \item{adjust.method}{Method for adjusting the significance level. "bonferroni": Bonferroni correction, "none": No correction.} 
+  \item{verbose}{a logical for printing output to R console.}
   \item{...}{Additional arguments affecting multiple comparisons of groups in one-way independent designs.}
 
 }

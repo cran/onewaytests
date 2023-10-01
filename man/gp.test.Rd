@@ -8,14 +8,14 @@ Test for Equal Means in a One-Way Layout under Unequal Variances
 \code{gp.test} tests whether two or more samples from normal distributions have the same means when the variances are not necessarily equal.
 }
 
-\usage{gp.test(formula, data, method = c("GT_Bootstrap","GT_Fiducial"), alpha = 0.05, 
+\usage{gp.test(formula, data, method = c("gtb","gtf"), alpha = 0.05, 
   na.rm = TRUE, verbose = TRUE)}
 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{formula}{a formula of the form \code{lhs ~ rhs} where \code{lhs} gives the sample values and \code{rhs} the corresponding groups.}
-  \item{data}{a tibble or data frame containing the variables in the formula \code{formula}} 
-  \item{method}{a character string to select the method. "GT_Bootstrap": Generalized Test Equivalent to Parametric Bootstrap Test (size close to intended), "GT_Fiducial": Generalized Test Equivalent to Fiducial Test (size assured).} 
+  \item{data}{a tibble or data frame containing the variables in \code{formula}.} 
+  \item{method}{a character string to select the method. "gtb": Generalized Test Equivalent to Parametric Bootstrap Test (size close to intended), "gtf": Generalized Test Equivalent to Fiducial Test (size assured).} 
   \item{alpha}{the level of significance to assess the statistical difference. Default is
 set to alpha = 0.05.} 
   \item{na.rm}{a logical value indicating whether NA values should be stripped before the computation proceeds.}
@@ -67,48 +67,16 @@ Sam Weerahandi, Malwane Ananda
 
 \examples{
 
-##Both examples given below are from the book written by Daniel and Cross (2013). 
-##They are One-way ANOVA examples, where it is not reasonable to assume equal variances.
-
-###Example 1
-
 library(onewaytests)
-
-x <- factor(c(1,1,1,1,2,2,2,2,3,3,3,3,4,4,4))
-y <- c(71.8,66.1,67.6,66.4,42.8,53.2,56.1,56.5, 
-       72.5,62.9,58.9,69.3,47.1,86.6,56)
-
-Example1 <- data.frame(y, x)
-
-describe(y ~ x, data = Example1)
-
 \donttest{
-out <- gp.test(y ~ x, data = Example1, alpha = 0.10)
+out <- gp.test(Sepal.Length ~ Species, data = iris, method = "gtb")
 paircomp(out)
 
-gp.test(y ~ x, data = Example1, method = "GT_Fiducial")
+out <- gp.test(Sepal.Length ~ Species, data = iris, method = "gtf")
+paircomp(out)
 }
 
-###Example 2
 
-library(onewaytests)
-
-x <- factor(c(1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,3,3,3,3,3,3,3,3))
-y <- c(92,93,74,80.5,76,71,75.5,88.5,93,80.5,83,87,79,
-       78,100,76.5,68,81.5,75,76.5,70.5,69,73.8,74,80)
-
-Example2 <- data.frame(y, x)
-
-describe(y ~ x, data = Example2)
-
-\donttest{
-out <- gp.test(y ~ x, data = Example2, method = "GT_Fiducial", alpha = 0.10)
-paircomp(out)
-
-out <- gp.test(y ~ x, data = Example2, 
-method = "GT_Bootstrap", alpha = 0.10)
-paircomp(out)
-}
 }
 
 \keyword{functions}

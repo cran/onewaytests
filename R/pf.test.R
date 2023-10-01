@@ -1,10 +1,10 @@
-johansen.test <- function(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE) {
+pf.test <- function(formula, data, N = 10^5, alpha = 0.05, na.rm = TRUE, verbose = TRUE) {
   
   data <- model.frame(formula, data)
   dp <- as.character(formula)
   DNAME <- paste(dp[[2L]], "and", dp[[3L]])
   
-  METHOD <- "Johansen F Test"
+  METHOD <- "Permutation F Test"
   
   
   if (na.rm){
@@ -20,34 +20,20 @@ johansen.test <- function(formula, data, alpha = 0.05, na.rm = TRUE, verbose = T
   
   
   if (!(is.factor(group)|is.character(group))) stop("The group variable must be a factor or a character.") 
-  if (is.character(group)) group <- as.factor(group) 
+  if (is.character(group)) group <- as.factor(group)
   if (!is.numeric(y)) stop("The response must be a numeric variable.") 
   
-  n <- length(y)
-  x.levels <- levels(factor(group))
-  k <- length(x.levels)
   
-  y.means <- tapply(y, group, mean)
-  y.n <- tapply(y, group, length)
-  y.vars <- tapply(y, group, var)
+  F_observed <- aov.test(formula, data, alpha = alpha, na.rm = na.rm, verbose = FALSE)$statistic
+  count <- 0
+  for (i in 1:N) {
+    group_p <- sample(group)
+    store <- data.frame(y, group_p)
+    F_p <- aov.test(y ~ group_p, data = store, alpha = alpha, na.rm = na.rm, verbose = FALSE)$statistic
+    if (F_p >= F_observed) count <- count + 1
+  }
   
-  
-  w <- y.n/y.vars
-  h <- w/sum(w)
-  
-  
-  A <- sum((1 - w/sum(w))^2/(y.n - 1))
-  c <- (k - 1) + 2 * A - (6 * A/(k + 1)) 
-  T <- sum(w * (y.means - sum(h * y.means))^2)
-  
-  df1 <- k-1
-  df2 <- (k - 1) * (k + 1)/(3 * A)
-  
-  Ftest=T/c
-  
-  p.value=pf(Ftest,df1,df2,lower.tail = F)
-  
-  
+  p.value <- count/N
   
   
   if (verbose) {
@@ -56,9 +42,6 @@ johansen.test <- function(formula, data, alpha = 0.05, na.rm = TRUE, verbose = T
     cat("-------------------------------------------------------------", 
         "\n", sep = " ")
     cat("  data :", DNAME, "\n\n", sep = " ")
-    cat("  statistic  :", Ftest, "\n", sep = " ")
-    cat("  num df     :", df1, "\n", sep = " ")
-    cat("  denom df   :", df2, "\n", sep = " ")
     cat("  p.value    :", p.value, "\n\n", sep = " ")
     cat(if (p.value > alpha) {
       "  Result     : Difference is not statistically significant."
@@ -71,13 +54,12 @@ johansen.test <- function(formula, data, alpha = 0.05, na.rm = TRUE, verbose = T
   }
   
   result <- list()
-  result$statistic <- Ftest
-  result$parameter <- c(df1,df2)
   result$p.value <- p.value
   result$alpha <- alpha
   result$method <- METHOD 
   result$data <- data
   result$formula <- formula
+  result$N <- N
   
   attr(result, "class") <- "owt"
   invisible(result)

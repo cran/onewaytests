@@ -5,7 +5,7 @@
 Descriptive Statistics
 }
 \description{
-\code{describe} produces basic descritive statistics including sample size, mean, standard deviation, median, minimum value, maximum value, 25th quantile, 75th quantile, skewness, kurtosis, the number of missing value.
+\code{describe} produces basic descriptive statistics including sample size, mean, standard deviation, median, minimum value, maximum value, 25th quantile, 75th quantile, skewness, kurtosis, the number of missing value.
 }
 
 \usage{describe(formula, data)}
@@ -13,7 +13,7 @@ Descriptive Statistics
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{formula}{a formula of the form \code{lhs ~ rhs} where \code{lhs} gives the sample values and \code{rhs} the corresponding groups.}
-  \item{data}{a tibble or data frame containing the variables in the formula \code{formula}} 
+  \item{data}{a tibble or data frame containing the variables in \code{formula}.} 
 }
 
 %\details{

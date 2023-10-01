@@ -12,12 +12,13 @@ Pairwise Comparisons
 
 \usage{
 \method{paircomp}{owt}(x, adjust.method = c("bonferroni", "holm", "hochberg", "hommel", "BH", 
-  "BY", "fdr", "none"), ...)}
+  "BY", "fdr", "none"), verbose = TRUE, ...)}
 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{a \code{owt} object.}
   \item{adjust.method}{Method for adjusting p values (see \code{\link[stats]{p.adjust}}). Default is set to "bonferroni".} 
+  \item{verbose}{a logical for printing output to R console.}
   \item{...}{Additional arguments affecting multiple comparisons of groups in one-way independent designs.}
 
 }

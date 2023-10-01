@@ -1,14 +1,14 @@
-\name{mw.test}
-\alias{mw.test}
+\name{mbf.test}
+\alias{mbf.test}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Mann-Whitney U Test
+Modified Brown-Forsythe Test
 }
 \description{
-\code{mw.test} performs Mann-Whitney U test for two samples.
+\code{mbf.test} performs modified Brown-Forsythe test.
 }
 
-\usage{mw.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
+\usage{mbf.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -21,43 +21,46 @@ set to alpha = 0.05.}
 
 }
 
-\details{
-Approximation to normal distribution is used to obtain the p-value.
-}
+%\details{
+%%  ~~ If necessary, more details than the description above ~~
+%}
 
 
 \value{
 A list with class "owt" containing the following components:
-\item{statistic}{the Z statistic.}
+
+\item{statistic}{the modified Brown-Forsythe test statistic.}
+\item{parameter}{the parameter(s) of the approximate F distribution of the test statistic.}
 \item{p.value}{the p-value of the test.}
 \item{alpha}{the level of significance to assess the statistical difference.} 
+\item{method}{the character string "Modified Brown-Forsythe Test".}
 \item{data}{a data frame containing the variables in which NA values (if exist) are removed.}
 \item{formula}{a formula of the form \code{lhs ~ rhs} where \code{lhs} gives the sample values and \code{rhs} the corresponding groups.}
+
+
+}
+
+\references{
+
+Mehrotra, D.V. (1997). Improving the Brown-Forsythe Solution to the Generalized Behrens-Fisher Problem. \emph{Communications in Statistics-Simulation and Computation}, \bold{26:3}, 1139-1145.
 
 }
 
 
 \author{
-Osman Dag
+Merve Kasikci
 }
 
-
-\seealso{
-\code{\link[stats]{wilcox.test}} \code{\link[onewaytests]{st.test}} \code{\link[onewaytests]{wt.test}} 
- 
-}
 
 
 \examples{
 
-
-library(AID)
-data(AADT)
-
 library(onewaytests)
-describe(aadt ~ control, data = AADT)
 
-mw.test(aadt ~ control, data = AADT)
+mbf.test(Sepal.Length ~ Species, data = iris)
+
+out <- mbf.test(Sepal.Length ~ Species, data = iris)
+paircomp(out)
 
 
 }

@@ -1,19 +1,21 @@
-\name{mw.test}
-\alias{mw.test}
+\name{pf.test}
+\alias{pf.test}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Mann-Whitney U Test
+Permutation F Test
 }
 \description{
-\code{mw.test} performs Mann-Whitney U test for two samples.
+\code{pf.test} performs Permutation F test.
 }
 
-\usage{mw.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
+\usage{pf.test(formula, data, N = 10^5, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
+
 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{formula}{a formula of the form \code{lhs ~ rhs} where \code{lhs} gives the sample values and \code{rhs} the corresponding groups.}
   \item{data}{a tibble or data frame containing the variables in \code{formula}.} 
+  \item{N}{the number of bootstrap samples. Default is set to 10^5.} 
   \item{alpha}{the level of significance to assess the statistical difference. Default is
 set to alpha = 0.05.} 
   \item{na.rm}{a logical value indicating whether NA values should be stripped before the computation proceeds.}
@@ -21,18 +23,22 @@ set to alpha = 0.05.}
 
 }
 
-\details{
-Approximation to normal distribution is used to obtain the p-value.
-}
 
 
 \value{
 A list with class "owt" containing the following components:
-\item{statistic}{the Z statistic.}
-\item{p.value}{the p-value of the test.}
+\item{p.value}{the Permutation F test p-value.}
 \item{alpha}{the level of significance to assess the statistical difference.} 
+\item{method}{the character string "Permutation F Test".}
 \item{data}{a data frame containing the variables in which NA values (if exist) are removed.}
 \item{formula}{a formula of the form \code{lhs ~ rhs} where \code{lhs} gives the sample values and \code{rhs} the corresponding groups.}
+\item{N}{the number of bootstrap samples.} 
+
+}
+
+\references{
+
+Berry, K.J., Mielke Jr, P.W., Mielke, H.W. (2002). The Fisher-Pitman Permutation Test: an Attractive Alternative to the F Test. \emph{Psychological Reports}, \bold{90:2}, 495-502.
 
 }
 
@@ -41,25 +47,18 @@ A list with class "owt" containing the following components:
 Osman Dag
 }
 
-
-\seealso{
-\code{\link[stats]{wilcox.test}} \code{\link[onewaytests]{st.test}} \code{\link[onewaytests]{wt.test}} 
- 
-}
-
-
 \examples{
 
-
-library(AID)
-data(AADT)
-
 library(onewaytests)
-describe(aadt ~ control, data = AADT)
 
-mw.test(aadt ~ control, data = AADT)
+\donttest{
+pf.test(Sepal.Length ~ Species, data = iris)
 
+out <- pf.test(Sepal.Length ~ Species, data = iris)
+paircomp(out)
+}
 
 }
+
 
 \keyword{functions}

@@ -1,19 +1,21 @@
-\name{mw.test}
-\alias{mw.test}
+\name{wgf.test}
+\alias{wgf.test}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Mann-Whitney U Test
+Weerahandi's Generalized F Test
 }
 \description{
-\code{mw.test} performs Mann-Whitney U test for two samples.
+\code{wgf.test} performs Weerahandi's generalized F test.
 }
 
-\usage{mw.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
+\usage{wgf.test(formula, data, N = 10^5, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
+
 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{formula}{a formula of the form \code{lhs ~ rhs} where \code{lhs} gives the sample values and \code{rhs} the corresponding groups.}
   \item{data}{a tibble or data frame containing the variables in \code{formula}.} 
+  \item{N}{the number of bootstrap samples. Default is set to 10^5.} 
   \item{alpha}{the level of significance to assess the statistical difference. Default is
 set to alpha = 0.05.} 
   \item{na.rm}{a logical value indicating whether NA values should be stripped before the computation proceeds.}
@@ -21,45 +23,47 @@ set to alpha = 0.05.}
 
 }
 
-\details{
-Approximation to normal distribution is used to obtain the p-value.
+\note{
+The user can contact the author of this code, \href{mailto:Weerahandi@X-Techniques.com}{Sam Weerahandi}, for additional information about the method and the code.
 }
+
+
 
 
 \value{
 A list with class "owt" containing the following components:
-\item{statistic}{the Z statistic.}
-\item{p.value}{the p-value of the test.}
+\item{p.value}{the p-value of Weerahandi's generalized F test.}
 \item{alpha}{the level of significance to assess the statistical difference.} 
+\item{method}{the character string "Weerahandi's Generalized F Test".}
 \item{data}{a data frame containing the variables in which NA values (if exist) are removed.}
 \item{formula}{a formula of the form \code{lhs ~ rhs} where \code{lhs} gives the sample values and \code{rhs} the corresponding groups.}
+\item{N}{the number of bootstrap samples.} 
+
+}
+
+\references{
+
+Weerahandi, S. (1995). ANOVA under Unequal Error Variances. \emph{Biometrics}, 589-599.
 
 }
 
 
 \author{
-Osman Dag
+Sam Weerahandi
 }
-
-
-\seealso{
-\code{\link[stats]{wilcox.test}} \code{\link[onewaytests]{st.test}} \code{\link[onewaytests]{wt.test}} 
- 
-}
-
 
 \examples{
 
-
-library(AID)
-data(AADT)
-
 library(onewaytests)
-describe(aadt ~ control, data = AADT)
 
-mw.test(aadt ~ control, data = AADT)
+\donttest{
+wgf.test(Sepal.Length ~ Species, data = iris)
 
+out <- wgf.test(Sepal.Length ~ Species, data = iris)
+paircomp(out)
+}
 
 }
+
 
 \keyword{functions}

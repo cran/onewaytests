@@ -1,14 +1,14 @@
-\name{mw.test}
-\alias{mw.test}
+\name{af.test}
+\alias{af.test}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Mann-Whitney U Test
+Alvandi's F Test 
 }
 \description{
-\code{mw.test} performs Mann-Whitney U test for two samples.
+\code{af.test} performs Alvandi's F test.
 }
 
-\usage{mw.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
+\usage{af.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -21,43 +21,46 @@ set to alpha = 0.05.}
 
 }
 
-\details{
-Approximation to normal distribution is used to obtain the p-value.
-}
+%\details{
+%%  ~~ If necessary, more details than the description above ~~
+%}
 
 
 \value{
 A list with class "owt" containing the following components:
-\item{statistic}{the Z statistic.}
+
+\item{statistic}{the Alvandi's F test statistic.}
+\item{parameter}{the parameter(s) of the approximate F distribution of the test statistic.}
 \item{p.value}{the p-value of the test.}
 \item{alpha}{the level of significance to assess the statistical difference.} 
+\item{method}{the character string "Alvandi's F Test".}
 \item{data}{a data frame containing the variables in which NA values (if exist) are removed.}
 \item{formula}{a formula of the form \code{lhs ~ rhs} where \code{lhs} gives the sample values and \code{rhs} the corresponding groups.}
+
+
+}
+
+\references{
+
+Sadooghi-Alvandi, S.M., Jafari, A.A., Mardani-Fard, H.A. (2012). One-Way ANOVA with Unequal Variances. \emph{Communications in Statistics-Theory and Methods}, \bold{41:22}, 4200-4221.
 
 }
 
 
 \author{
-Osman Dag
+Merve Kasikci
 }
 
-
-\seealso{
-\code{\link[stats]{wilcox.test}} \code{\link[onewaytests]{st.test}} \code{\link[onewaytests]{wt.test}} 
- 
-}
 
 
 \examples{
 
-
-library(AID)
-data(AADT)
-
 library(onewaytests)
-describe(aadt ~ control, data = AADT)
 
-mw.test(aadt ~ control, data = AADT)
+af.test(Sepal.Length ~ Species, data = iris)
+
+out <- af.test(Sepal.Length ~ Species, data = iris)
+paircomp(out)
 
 
 }
