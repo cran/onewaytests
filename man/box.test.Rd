@@ -5,7 +5,7 @@
 Box F Test
 }
 \description{
-\code{box.test} performs Box F test.
+\code{box.test} performs Box F test. This test is an alternative to one-way ANOVA when variances are homogeneous. The test statistic follows an F distribution.
 }
 
 \usage{box.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
@@ -57,7 +57,8 @@ library(onewaytests)
 
 box.test(Sepal.Length ~ Species, data = iris)
 
-out <- box.test(Sepal.Length ~ Species, data = iris)
+out <- box.test(Sepal.Length ~ Species, data = iris, verbose = FALSE)
+summary(out)
 paircomp(out)
 
 

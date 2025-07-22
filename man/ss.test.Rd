@@ -5,7 +5,7 @@
 Scott-Smith Test
 }
 \description{
-\code{ss.test} performs Scott-Smith test.
+\code{ss.test} performs Scott-Smith test. This test compares group means when group variances are not homogenous. The test statistic follows a chi-squared distribution.
 }
 
 \usage{ss.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
@@ -18,7 +18,6 @@ Scott-Smith Test
 set to alpha = 0.05.} 
   \item{na.rm}{a logical value indicating whether NA values should be stripped before the computation proceeds.}
   \item{verbose}{a logical for printing output to R console.}
-
 
 }
 
@@ -56,7 +55,8 @@ library(onewaytests)
 
 ss.test(Sepal.Length ~ Species, data = iris)
 
-out <- ss.test(Sepal.Length ~ Species, data = iris)
+out <- ss.test(Sepal.Length ~ Species, data = iris, verbose = FALSE)
+summary(out)
 paircomp(out)
 
 

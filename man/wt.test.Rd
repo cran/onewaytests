@@ -5,7 +5,7 @@
 Welch's t-Test
 }
 \description{
-\code{wt.test} performs Welch's t-test for two samples.
+\code{wt.test} performs Welch's t-test for two samples. This test is an alternative to Student's t-test when variances are homogeneous. The test statistic follows a t-distribution.
 }
 
 \usage{wt.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
@@ -59,6 +59,8 @@ describe(aadt ~ control, data = AADT)
 
 wt.test(aadt ~ control, data = AADT)
 
+out <- wt.test(aadt ~ control, data = AADT)
+summary(out)
 
 }
 

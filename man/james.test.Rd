@@ -5,7 +5,7 @@
 James Second Order Test
 }
 \description{
-\code{james.test} performs James second order test.
+\code{james.test} performs James second order test. This test is a heteroscedastic alternative to one-way ANOVA. The test statistic is formulated as a sum of squared standardized differences and compared to a critical value.
 }
 
 \usage{james.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
@@ -58,7 +58,8 @@ library(onewaytests)
 
 james.test(Sepal.Length ~ Species, data = iris, alpha = 0.05)
 
-out <- james.test(Sepal.Length ~ Species, data = iris, alpha = 0.05)
+out <- james.test(Sepal.Length ~ Species, data = iris, alpha = 0.05, verbose = FALSE)
+summary(out)
 paircomp(out)
 
 }

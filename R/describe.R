@@ -1,7 +1,7 @@
 
 describe <- function(formula, data){
   
-  data <- model.frame(formula, data)
+  data <- model.frame(formula, data, na.action = na.pass)
   dp <- as.character(formula)
   DNAME <- paste(dp[[2L]], "and", dp[[3L]])
   

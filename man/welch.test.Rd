@@ -5,7 +5,7 @@
 Welch's Heteroscedastic F Test and Welch's Heteroscedastic F Test with Trimmed Means and Winsorized Variances
 }
 \description{
-\code{welch.test} performs Welch's heteroscedastic F test and Welch's heteroscedastic F test with trimmed means and Winsorized variances.
+\code{welch.test} performs Welch's heteroscedastic F test and Welch's heteroscedastic F test with trimmed means and Winsorized variances. This test is a robust test that can be used when homogeneity of variance is not met. The test statistic follows an F distribution.
 }
 
 \usage{welch.test(formula, data, rate = 0, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
@@ -66,6 +66,7 @@ welch.test(Sepal.Length ~ Species, data = iris)
 welch.test(Sepal.Length ~ Species, data = iris, rate = 0.1)
 
 out <- welch.test(Sepal.Length ~ Species, data = iris)
+summary(out)
 paircomp(out)
 
 }

@@ -5,7 +5,7 @@
 Adjusted Welch's Heteroscedastic F Test
 }
 \description{
-\code{aw.test} performs adjusted Welch's heteroscedastic F test.
+\code{aw.test} performs adjusted Welch's heteroscedastic F test. This test is a heteroscedastic alternative to one-way ANOVA that is robust to the violation of variance homogeneity assumption. The test statistic follows an F distribution.
 }
 
 \usage{aw.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
@@ -58,7 +58,8 @@ library(onewaytests)
 
 aw.test(Sepal.Length ~ Species, data = iris)
 
-out <- aw.test(Sepal.Length ~ Species, data = iris)
+out <- aw.test(Sepal.Length ~ Species, data = iris, verbose = FALSE)
+summary(out)
 paircomp(out)
 
 

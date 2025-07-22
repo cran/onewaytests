@@ -5,7 +5,7 @@
 Modified Brown-Forsythe Test
 }
 \description{
-\code{mbf.test} performs modified Brown-Forsythe test.
+\code{mbf.test} performs modified Brown-Forsythe test. This test is a modification of Brown-Forsythe test to overcome the problem of higher than acceptable rate of false positives. The test statistic follows an F distribution.
 }
 
 \usage{mbf.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
@@ -59,9 +59,9 @@ library(onewaytests)
 
 mbf.test(Sepal.Length ~ Species, data = iris)
 
-out <- mbf.test(Sepal.Length ~ Species, data = iris)
+out <- mbf.test(Sepal.Length ~ Species, data = iris, verbose = FALSE)
+summary(out)
 paircomp(out)
-
 
 }
 

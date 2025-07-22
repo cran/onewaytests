@@ -32,6 +32,7 @@ set to alpha = 0.05.}
   \item{na.rm}{a logical value indicating whether NA values should be stripped before the computation proceeds.}
   \item{verbose}{a logical for printing output to R console.}
 
+
 }
 
 %\details{
@@ -63,15 +64,15 @@ library(onewaytests)
 # One-Way Analysis of Variance
 onewaytests(Sepal.Length ~ Species, data = iris, method = "aov")
 
+out <- onewaytests(Sepal.Length ~ Species, data = iris, method = "aov", verbose = FALSE)
+summary(out)
+paircomp(out)
+
 # Alexander-Govern test
 onewaytests(Sepal.Length ~ Species, data = iris, method = "ag")
 
 # Johansen F test
 onewaytests(Sepal.Length ~ Species, data = iris, method = "johansen")
-
-out <- onewaytests(Sepal.Length ~ Species, data = iris, method = "aov")
-paircomp(out)
-
 
 }
 

@@ -52,22 +52,12 @@ wgf.test <- function(formula, data, N = 10^5, alpha = 0.05, na.rm = TRUE, verbos
     gvec[m] <- pchisq(st,k-1)
   }
   gpval <-  1 - mean(gvec) # Eqn (3.41) of Weerahandi paper
-  p.value <- round(c(gpval),3)
+  p.value <- gpval
+
   if (verbose) {
-    cat("\n", "", METHOD, paste("(alpha = ", 
-                                alpha, ")", sep = ""), "\n", sep = " ")
-    cat("-------------------------------------------------------------", 
-        "\n", sep = " ")
-    cat("  p.value    :", round(p.value,4), "\n\n", sep = " ")
-    cat(if (p.value > alpha) {
-      "  Result     : Difference is not statistically significant."
-    }
-    else {
-      "  Result     : Difference is statistically significant."
-    }, "\n")
-    cat("-------------------------------------------------------------", 
-        "\n\n", sep = " ")
+  print(structure(list(p.value = p.value, method = METHOD, data.name = DNAME), class = "htest"))
   }
+
   result <- list()
   result$p.value <- p.value
   result$alpha <- alpha

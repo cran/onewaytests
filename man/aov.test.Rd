@@ -5,7 +5,7 @@
 One-Way Analysis of Variance 
 }
 \description{
-\code{aov.test} performs one-way analysis of variance (ANOVA).
+\code{aov.test} performs one-way analysis of variance (ANOVA). This test requires that the assumptions of normal distribution and homogeneity of variance be met. The test statistic follows an F distribution.
 }
 
 \usage{aov.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
@@ -60,9 +60,9 @@ library(onewaytests)
 
 aov.test(Sepal.Length ~ Species, data = iris)
 
-out <- aov.test(Sepal.Length ~ Species, data = iris)
+out <- aov.test(Sepal.Length ~ Species, data = iris, verbose = FALSE)
+summary(out)
 paircomp(out)
-
 
 }
 

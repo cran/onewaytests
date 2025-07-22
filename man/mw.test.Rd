@@ -5,7 +5,7 @@
 Mann-Whitney U Test
 }
 \description{
-\code{mw.test} performs Mann-Whitney U test for two samples.
+\code{mw.test} performs Mann-Whitney U test for two samples. This test is the nonparametric alternative to Student's t-test. The test statistic is calculated based on the U value derived from the ranks of the groups.
 }
 
 \usage{mw.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
@@ -59,6 +59,8 @@ describe(aadt ~ control, data = AADT)
 
 mw.test(aadt ~ control, data = AADT)
 
+out <- mw.test(aadt ~ control, data = AADT, verbose = FALSE)
+summary(out)
 
 }
 

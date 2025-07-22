@@ -5,7 +5,7 @@
 Cochran Test
 }
 \description{
-\code{cochran.test} performs Cochran test.
+\code{cochran.test} performs Cochran test. This test is a heteroscedastic alternative to one-way ANOVA. The test statistic follows a chi-squared distribution.
 }
 
 \usage{cochran.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
@@ -57,7 +57,8 @@ library(onewaytests)
 
 cochran.test(Sepal.Length ~ Species, data = iris)
 
-out <- cochran.test(Sepal.Length ~ Species, data = iris)
+out <- cochran.test(Sepal.Length ~ Species, data = iris, verbose = FALSE)
+summary(out)
 paircomp(out)
 
 }

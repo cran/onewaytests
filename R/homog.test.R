@@ -30,16 +30,17 @@ homog.test <- function(formula, data, method = c("Levene", "Bartlett", "Fligner"
                 sep = " ")
             cat("-----------------------------------------------", 
                 "\n", sep = " ")
-            cat("  data :", DNAME, "\n\n", sep = " ")
-            cat("  statistic  :", out$F[1], "\n", sep = " ")
-            cat("  num df     :", out$Df[1], "\n", sep = " ")
-            cat("  denum df   :", out$Df[2], "\n", sep = " ")
-            cat("  p.value    :", out$P[1], "\n\n", sep = " ")
+  	    cat("  dependent var :", dp[[2L]], "\n", sep = " ")
+            cat("  grouping var  :", dp[[3L]], "\n\n", sep = " ")
+            cat("  F        =", out$F[1], "\n", sep = " ")
+            cat("  num df   =", out$Df[1], "\n", sep = " ")
+            cat("  denum df =", out$Df[2], "\n", sep = " ")
+            cat("  p-value  =", out$P[1], "\n\n", sep = " ")
             cat(if (out$P[1] > alpha) {
-                "  Result     : Variances are homogeneous."
+                "  Result : Variances are homogeneous."
             }
             else {
-                "  Result     : Variances are not homogeneous."
+                "  Result : Variances are not homogeneous."
             }, "\n")
             cat("-----------------------------------------------", 
                 "\n\n", sep = " ")
@@ -61,15 +62,16 @@ homog.test <- function(formula, data, method = c("Levene", "Bartlett", "Fligner"
                 sep = " ")
             cat("-----------------------------------------------", 
                 "\n", sep = " ")
-            cat("  data :", DNAME, "\n\n", sep = " ")
-            cat("  statistic  :", out$statistic, "\n", sep = " ")
-            cat("  parameter  :", out$parameter, "\n", sep = " ")
-            cat("  p.value    :", out$p.value, "\n\n", sep = " ")
+            cat("  dependent var :", dp[[2L]], "\n", sep = " ")
+            cat("  grouping var  :", dp[[3L]], "\n\n", sep = " ")
+            cat("  X-squared =", out$statistic, "\n", sep = " ")
+            cat("  df        =", out$parameter, "\n", sep = " ")
+            cat("  p-value   =", out$p.value, "\n\n", sep = " ")
             cat(if (out$p.value > alpha) {
-                "  Result     : Variances are homogeneous."
+                "  Result : Variances are homogeneous."
             }
             else {
-                "  Result     : Variances are not homogeneous."
+                "  Result : Variances are not homogeneous."
             }, "\n")
             cat("-----------------------------------------------", 
                 "\n\n", sep = " ")
@@ -91,15 +93,16 @@ homog.test <- function(formula, data, method = c("Levene", "Bartlett", "Fligner"
                 sep = " ")
             cat("---------------------------------------------------", 
                 "\n", sep = " ")
-            cat("  data :", DNAME, "\n\n", sep = " ")
-            cat("  statistic  :", out$statistic, "\n", sep = " ")
-            cat("  parameter  :", out$parameter, "\n", sep = " ")
-            cat("  p.value    :", out$p.value, "\n\n", sep = " ")
+            cat("  dependent var :", dp[[2L]], "\n", sep = " ")
+            cat("  grouping var  :", dp[[3L]], "\n\n", sep = " ")
+            cat("  X-squared =", out$statistic, "\n", sep = " ")
+            cat("  df        =", out$parameter, "\n", sep = " ")
+            cat("  p-value   =", out$p.value, "\n\n", sep = " ")
             cat(if (out$p.value > alpha) {
-                "  Result     : Variances are homogeneous."
+                "  Result : Variances are homogeneous."
             }
             else {
-                "  Result     : Variances are not homogeneous."
+                "  Result : Variances are not homogeneous."
             }, "\n")
             cat("---------------------------------------------------", 
                 "\n\n", sep = " ")

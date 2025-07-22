@@ -5,7 +5,7 @@
 Alvandi's F Test 
 }
 \description{
-\code{af.test} performs Alvandi's F test.
+\code{af.test} performs Alvandi's F test. This test assumes that the data within each group are normally distributed and offers a robust alternative to one-way ANOVA when heteroscedasticity is present. The test statistic follows an F distribution.
 }
 
 \usage{af.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
@@ -18,7 +18,6 @@ Alvandi's F Test
 set to alpha = 0.05.} 
   \item{na.rm}{a logical value indicating whether NA values should be stripped before the computation proceeds.}
   \item{verbose}{a logical for printing output to R console.}
-
 }
 
 %\details{
@@ -59,7 +58,8 @@ library(onewaytests)
 
 af.test(Sepal.Length ~ Species, data = iris)
 
-out <- af.test(Sepal.Length ~ Species, data = iris)
+out <- af.test(Sepal.Length ~ Species, data = iris, verbose = FALSE)
+summary(out)
 paircomp(out)
 
 

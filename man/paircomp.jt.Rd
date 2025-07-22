@@ -41,6 +41,7 @@ Osman Dag}
 library(onewaytests)
 
 out <- james.test(Sepal.Length ~ Species, data = iris, alpha = 0.05)
+summary(out)
 paircomp(out, adjust.method = "bonferroni")
 
 }

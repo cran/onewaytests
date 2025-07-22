@@ -5,7 +5,7 @@
 Student's t-Test
 }
 \description{
-\code{st.test} performs Student's t-test for two samples.
+\code{st.test} performs Student's t-test for two samples. This test requires that the assumptions of normal distribution and homogeneity of variance be met. The test statistic follows a t-distribution.
 }
 
 \usage{st.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
@@ -59,6 +59,8 @@ describe(aadt ~ control, data = AADT)
 
 st.test(aadt ~ control, data = AADT)
 
+out <- st.test(aadt ~ control, data = AADT, verbose = FALSE)
+summary(out)
 
 }
 

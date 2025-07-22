@@ -5,7 +5,7 @@
 Approximate F Test
 }
 \description{
-\code{ap.test} performs approximate F test.
+\code{ap.test} performs approximate F test. This test assumes that the data within each group are normally distributed and offers a robust alternative to one-way ANOVA when heteroscedasticity is present. The test statistic follows an approximate F-distribution. Especially for small samples, this test provide better control of the type I error rate.
 }
 
 \usage{ap.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
@@ -57,7 +57,8 @@ library(onewaytests)
 
 ap.test(Sepal.Length ~ Species, data = iris)
 
-out <- ap.test(Sepal.Length ~ Species, data = iris)
+out <- ap.test(Sepal.Length ~ Species, data = iris, verbose = FALSE)
+summary(out)
 paircomp(out)
 
 

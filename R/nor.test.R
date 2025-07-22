@@ -1,5 +1,5 @@
 
-nor.test <- function(formula, data, method = c("SW", "SF", "LT", "AD", "CVM", "PT"), alpha = 0.05, plot = c("qqplot-histogram", "qqplot", "histogram"), mfrow = NULL, na.rm = TRUE, verbose = TRUE){ 
+nor.test <- function(formula, data, method = c("SW", "SF", "LT", "AD", "CVM", "PT"), plot = c("qqplot-histogram", "qqplot", "histogram"), mfrow = NULL, alpha = 0.05, na.rm = TRUE, verbose = TRUE){ 
 
   data <- model.frame(formula, data)
   dp <- as.character(formula)
@@ -88,7 +88,8 @@ if (method == "PT") {
         cat("\n", "",method.name, paste("(alpha = ",alpha,")",sep = ""), "\n", sep = " ")
         cat("--------------------------------------------------", 
             "\n", sep = " ")
-        cat("  data :", dname1, "and", dname2, "\n\n", sep = " ")
+        cat("  dependent var :", dp[[2L]], "\n", sep = " ")
+        cat("  grouping var  :", dp[[3L]], "\n\n", sep = " ")
           
         print(store)
           cat("--------------------------------------------------", 

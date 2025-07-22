@@ -5,7 +5,7 @@
 Welch-Aspin Test
 }
 \description{
-\code{wa.test} performs Welch-Aspin test.
+\code{wa.test} performs Welch-Aspin test. This test is a modification of Welch test. The test statistic follows an F distribution.
 }
 
 \usage{wa.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
@@ -60,8 +60,8 @@ library(onewaytests)
 wa.test(Sepal.Length ~ Species, data = iris)
 
 out <- wa.test(Sepal.Length ~ Species, data = iris)
+summary(out)
 paircomp(out)
-
 
 }
 

@@ -5,7 +5,7 @@
 Brown-Forsythe Test
 }
 \description{
-\code{bf.test} performs Brown-Forsythe test.
+\code{bf.test} performs Brown-Forsythe test. This test is a modification of one-way ANOVA for cases with heterogeneous variances. The test statistic follows an F distribution.
 }
 
 \usage{bf.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
@@ -59,7 +59,8 @@ library(onewaytests)
 
 bf.test(Sepal.Length ~ Species, data = iris)
 
-out <- bf.test(Sepal.Length ~ Species, data = iris)
+out <- bf.test(Sepal.Length ~ Species, data = iris, verbose = FALSE)
+summary(out)
 paircomp(out)
 
 

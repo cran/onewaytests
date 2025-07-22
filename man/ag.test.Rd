@@ -5,7 +5,7 @@
 Alexander-Govern Test
 }
 \description{
-\code{ag.test} performs Alexander-Govern test.
+\code{ag.test} performs Alexander-Govern test. This test is an alternative to one-way ANOVA when group variances are not homogeneous. The test statistic follows a chi-square distribution.
 }
 
 \usage{ag.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
@@ -62,7 +62,8 @@ library(onewaytests)
 
 ag.test(Sepal.Length ~ Species, data = iris)
 
-out <- ag.test(Sepal.Length ~ Species, data = iris)
+out <- ag.test(Sepal.Length ~ Species, data = iris, verbose = FALSE)
+summary(out)
 paircomp(out)
 
 ######
@@ -73,7 +74,8 @@ library(tibble)
 iris <- as_tibble(iris)
 ag.test(Sepal.Length ~ Species, data = iris)
 
-out <- ag.test(Sepal.Length ~ Species, data = iris)
+out <- ag.test(Sepal.Length ~ Species, data = iris, verbose = FALSE)
+summary(out)
 paircomp(out)
 
 ######

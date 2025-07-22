@@ -5,7 +5,7 @@
 Alvandi's Generalized P-Value
 }
 \description{
-\code{agp.test} performs Alvandi's generalized p-value.
+\code{agp.test} performs Alvandi's generalized p-value. This test assumes normality within each group and provides an alternative to one-way ANOVA when variances are unequal. The p-value is obtained by comparing the observed Cochran's test statistic with the reference distribution calculated using Monte Carlo simulation.
 }
 
 \usage{agp.test(formula, data, N = 10^5, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
@@ -54,7 +54,8 @@ library(onewaytests)
 \donttest{
 agp.test(Sepal.Length ~ Species, data = iris)
 
-out <- agp.test(Sepal.Length ~ Species, data = iris)
+out <- agp.test(Sepal.Length ~ Species, data = iris, verbose = FALSE)
+summary(out)
 paircomp(out)
 }
 

@@ -5,7 +5,7 @@
 Kruskal-Wallis Test
 }
 \description{
-\code{kw.test} performs Kruskal-Wallis test.
+\code{kw.test} performs Kruskal-Wallis test. This test serves as a nonparametric alternative to ANOVA when the normality assumption is not met. The test statistic follows a chi-squared distribution.
 }
 
 \usage{kw.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
@@ -59,7 +59,8 @@ library(onewaytests)
 
 kw.test(Sepal.Length ~ Species, data = iris)
 
-out <- kw.test(Sepal.Length ~ Species, data = iris)
+out <- kw.test(Sepal.Length ~ Species, data = iris, verbose = FALSE)
+summary(out)
 paircomp(out)
 
 }

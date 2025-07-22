@@ -5,7 +5,7 @@
 Permutation F Test
 }
 \description{
-\code{pf.test} performs Permutation F test.
+\code{pf.test} performs Permutation F test. This test evaluates mean differences without depending on the theoretical F distribution. Rather, it relies on an empirical F distribution produced using permutations. This test is robust to violations of normality and variance homogeneity.
 }
 
 \usage{pf.test(formula, data, N = 10^5, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
@@ -54,7 +54,8 @@ library(onewaytests)
 \donttest{
 pf.test(Sepal.Length ~ Species, data = iris)
 
-out <- pf.test(Sepal.Length ~ Species, data = iris)
+out <- pf.test(Sepal.Length ~ Species, data = iris, verbose = FALSE)
+summary(out)
 paircomp(out)
 }
 

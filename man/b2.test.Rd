@@ -5,7 +5,7 @@
 B Square Test
 }
 \description{
-\code{b2.test} performs B square test.
+\code{b2.test} performs B square test. This test is an alternative to one-way ANOVA when variances are homogeneous and uses Bailey's normality transformation. The test statistic follows a chi-squared distribution.
 }
 
 \usage{b2.test(formula, data, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
@@ -54,7 +54,8 @@ library(onewaytests)
 
 b2.test(Sepal.Length ~ Species, data = iris)
 
-out <- b2.test(Sepal.Length ~ Species, data = iris)
+out <- b2.test(Sepal.Length ~ Species, data = iris, verbose = FALSE)
+summary(out)
 paircomp(out)
 
 }

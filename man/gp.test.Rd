@@ -69,10 +69,14 @@ Sam Weerahandi, Malwane Ananda
 
 library(onewaytests)
 \donttest{
-out <- gp.test(Sepal.Length ~ Species, data = iris, method = "gtb")
+gp.test(Sepal.Length ~ Species, data = iris, method = "gtb")
+out <- gp.test(Sepal.Length ~ Species, data = iris, method = "gtb", verbose = FALSE)
+summary(out)
 paircomp(out)
 
-out <- gp.test(Sepal.Length ~ Species, data = iris, method = "gtf")
+gp.test(Sepal.Length ~ Species, data = iris, method = "gtf")
+out <- gp.test(Sepal.Length ~ Species, data = iris, method = "gtf", verbose = FALSE)
+summary(out)
 paircomp(out)
 }
 

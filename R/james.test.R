@@ -88,22 +88,8 @@ CV <- c+((1/2)*(3*chi4+chi2)*Tsum)+((1/16)*((3*chi4+chi2)^2)*(1-((J-3)/c))*(Tsum
 
 
 if (verbose) {
-            cat("\n", "",METHOD, paste("(alpha = ",alpha,")",sep = ""),"\n", 
-                sep = " ")
-            cat("----------------------------------------------------------------", 
-                "\n", sep = " ")
-            cat("  data :", DNAME, "\n\n", sep = " ")
-            cat("  statistic     :", Jtest, "\n", sep = " ")
-            cat("  criticalValue :", CV, "\n\n", sep = " ")
-            cat(if (Jtest < CV) {
-                "  Result        : Difference is not statistically significant."
-            }
-            else {
-                "  Result        : Difference is statistically significant."
-            }, "\n")
-            cat("----------------------------------------------------------------", 
-                "\n\n", sep = " ")
-        }
+print(structure(list(statistic = c("Jtest" = Jtest), parameter= c("CriticalValue" = CV), method = METHOD, data.name = DNAME), class = "htest"))
+}
 
 result <- list()
 result$statistic <- Jtest

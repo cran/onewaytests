@@ -5,7 +5,7 @@
 Weerahandi's Generalized F Test
 }
 \description{
-\code{wgf.test} performs Weerahandi's generalized F test.
+\code{wgf.test} performs Weerahandi's generalized F test. This test provides a robust procedure for independent groups design by replacing the usual means and variances with trimmed means and Winsorized variances. The p-value of this test is obtained using Monte Carlo simulation.
 }
 
 \usage{wgf.test(formula, data, N = 10^5, alpha = 0.05, na.rm = TRUE, verbose = TRUE)}
@@ -60,6 +60,7 @@ library(onewaytests)
 wgf.test(Sepal.Length ~ Species, data = iris)
 
 out <- wgf.test(Sepal.Length ~ Species, data = iris)
+summary(out)
 paircomp(out)
 }
 
